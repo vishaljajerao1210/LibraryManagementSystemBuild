@@ -6,8 +6,13 @@
 <div class="container ">
 <div class="col-md-8">
  <div class="col-md-offset-4 ">
+<a href="#" data-toggle="modal" data-target="#issue-modal">Issue book</a>
 
-        <form class="navbar-form" role="search">
+<div class="modal fade" id="issue-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	  <div class="modal-dialog">
+				<div class="issuemodal-container">
+					<h1>Enter ISBN</h1><br>
+					<form class="navbar-form" role="search">
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
             <div class="input-group-btn">&nbsp;&nbsp;&nbsp;
@@ -15,6 +20,19 @@
             </div>
         </div>	
         </form>
+				  <form>
+					ISBN:<input type=" " name="user" placeholder="ISBN" ngmodel="">
+					Title:<input type="text" name=" " placeholder="Title" ngmodel=" ">
+						Author:<input type="text" name=" " placeholder="author" ngmodel=" ">
+							Quantity:<input type=" " name=" " placeholder="Quantity" ngmodel=" ">
+							Member:<input type=" " name=" " placeholder="Memid" ngmodel=" ">
+					<input type="submit" name="issue" class="issue issuemodal-submit" value="issue">
+				  </form>
+					
+				 </div>
+			</div>
+		  </div>
+        
 				
 				<br>
 				<br>

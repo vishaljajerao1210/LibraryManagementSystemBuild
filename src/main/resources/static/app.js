@@ -27,6 +27,14 @@ app.config(['$routeProvider','$httpProvider',
                templateUrl: 'fine.html',
                controller: 'viewfinectrl'
              })
+             .when('/issuebook', {
+               templateUrl: 'issuebook.html',
+               controller: 'issuebookctrl'
+             })
+             .when('/track', {
+               templateUrl: 'track.html',
+               controller: 'trackctrl'
+             })
             //  .otherwise({
              // redirectTo: '/view'
             // });
@@ -59,7 +67,7 @@ app.controller('viewbooks', [ '$scope','$rootScope','$http',  '$routeParams', fu
 	{
 		$http({
 			method: 'POST',
-			url : '/savecourse',
+			url : '/addbook',
 			
 			data : $rootScope.books
 			
@@ -83,7 +91,7 @@ app.controller('viewbooks', [ '$scope','$rootScope','$http',  '$routeParams', fu
 
 		$http({
 			method : 'GET',
-			url :'/viewcategories',
+			url :'/categories',
 			/*headers : {
 				'Authorization' : 'Basic ' + encodedAuthData
 			}*/
@@ -104,7 +112,7 @@ app.controller('addcategoryctrl', [ '$scope','$rootScope','$http',  '$routeParam
 	$rootScope.categories={};
 $scope.addcategory=function(){
 		$http({
-			method : 'GET',
+			method : 'POST',
 			url : '/addcategory',
 			data:$rootScope.categories
 			/*headers : {
@@ -122,7 +130,7 @@ $scope.addcategory=function(){
 	app.controller('viewfinectrl', [ '$scope','$rootScope','$http',  '$routeParams', function($scope, $rootScope, $http, $routeParams) {
 
 
-$scope.viewfine=function(){
+
 		$http({
 			method : 'GET',
 			url : '/viewfine',
@@ -131,8 +139,44 @@ $scope.viewfine=function(){
 				'Authorization' : 'Basic ' + encodedAuthData
 			}*/
 		}).then(function(response) {
-			$rootScope.fine = response.data;
+			$rootScope.finesview = response.data;
 		});
-}
+
+} ])
+
+app.controller('trackctrl', [ '$scope','$rootScope','$http', function($scope, $rootScope, $http) {
+
+
+
+		$http({
+			method : 'GET',
+			url : '/track',
+			
+			/*headers : {
+				'Authorization' : 'Basic ' + encodedAuthData
+			}*/
+		}).then(function(response) {
+			$rootScope.track = response.data;
+		});
+
+} ])
+
+app.controller('issuebookctrl', [ '$scope','$rootScope','$http', function($scope, $rootScope, $http) {
+
+	$rootScope.bookdetail={};
+	$scope.addcategory=function(){
+
+		$http({
+			method : 'POST',
+			url : '/issuebook',
+			data:$rootScope.bookdetail
+			
+			/*headers : {
+				'Authorization' : 'Basic ' + encodedAuthData
+			}*/
+		}).then(function(response) {
+			$rootScope.issue = response.data;
+		});
+
 } ])
 

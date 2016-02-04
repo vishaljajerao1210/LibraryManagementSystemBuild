@@ -11,17 +11,15 @@
 <thead width="40%">
 <tr>
 <th>Id</th>
-<th>No of days</th>
+<th>numberOfDays</th>
 <th>Amount</th>
-	<th>View</th>
-					<th>Edit</th>
 					
 </tr>
 </thead>
-<tbody ng-repeat="x in fine">
+<tbody ng-repeat="x in finesview">
 <tr>
 <td>{{x.id}}</td>
-<td></td>
+<td>{{x.numberOfDays}}</td>
 <td>{{x.amount}}</td>
 <td><a href=#view/{{books.id}}>view</a></td>
 		</div>
