@@ -1,0 +1,20 @@
+
+<body ng-controller="viewcategories">
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>category</th>
+<th>view</th>
+<th>edit</th>
+
+</tr>
+<tbody ng-repeat="x in categories">
+<tr>
+<td>{{x.categoryname}}</td>
+<td><a href=#home>view</a></td>
+<td><a  href=#edit/{{books.id}}>edit</a></td>
+</tr>
+</tbody>
+</table>
+
+</body>
