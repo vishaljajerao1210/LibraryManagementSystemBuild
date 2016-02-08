@@ -161,7 +161,7 @@ app.controller('trackctrl', [ '$scope','$rootScope','$http', function($scope, $r
 
 } ])
 
-app.controller('issuebookctrl', [ '$scope','$rootScope','$http', function($scope, $rootScope, $http) {
+/*app.controller('issuebookctrl', [ '$scope','$rootScope','$http', function($scope, $rootScope, $http) {
 
 	$rootScope.bookdetail={};
 	$scope.addcategory=function(){
@@ -171,12 +171,12 @@ app.controller('issuebookctrl', [ '$scope','$rootScope','$http', function($scope
 			url : '/issuebook',
 			data:$rootScope.bookdetail
 			
-			/*headers : {
+			headers : {
 				'Authorization' : 'Basic ' + encodedAuthData
-			}*/
+			}
 		}).then(function(response) {
 			$rootScope.issue = response.data;
 		});
 
 } ])
-
+*/

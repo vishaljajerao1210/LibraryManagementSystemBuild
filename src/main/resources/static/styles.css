@@ -6,7 +6,7 @@
   margin: 0;
   padding: 0;
   border: 0;
-  list-style: none;
+   list-style:square;
   line-height: 1;
   display: block;
   position: relative;
@@ -16,8 +16,9 @@
 }
 #cssmenu {
   width: 220px;
-  font-family: Raleway, sans-serif;
-  color: #ffffff;
+  font-family: fantasy;
+  color: #ddddee;
+     height: 100%;
 }
 #cssmenu ul ul {
   display: none;
@@ -26,7 +27,7 @@
   display: block;
 }
 .align-right {
-  float: right;
+  float: inherit;
 }
 #cssmenu > ul > li > a {
   padding: 16px 22px;
@@ -34,14 +35,12 @@
   z-index: 2;
   font-size: 16px;
   text-decoration: none;
-  color: #ffffff;
-  background: #3ab4a6;
-  -webkit-transition: color .2s ease;
-  -o-transition: color .2s ease;
-  transition: color .2s ease;
+  color: black;
+  background: #ddddee;
+  
 }
 #cssmenu > ul > li > a:hover {
-  color: #d8f3f0;
+  color: white;
 }
 #cssmenu ul > li.has-sub > a:after {
   position: absolute;
@@ -49,10 +48,10 @@
   top: 19px;
   z-index: 5;
   display: block;
-  height: 10px;
+  height: 100px;
   width: 2px;
-  background: #ffffff;
-  content: "";
+  background: #bfdedf;
+  content: ;
   -webkit-transition: all 0.1s ease-out;
   -moz-transition: all 0.1s ease-out;
   -ms-transition: all 0.1s ease-out;
@@ -66,7 +65,7 @@
   display: block;
   width: 10px;
   height: 2px;
-  background: #ffffff;
+  background: black;
   content: "";
   -webkit-transition: all 0.1s ease-out;
   -moz-transition: all 0.1s ease-out;
@@ -88,8 +87,8 @@
   z-index: 2;
   font-size: 14px;
   text-decoration: none;
-  color: #dddddd;
-  background: #49505a;
+  color: white;
+  background: black;
   -webkit-transition: color .2s ease;
   -o-transition: color .2s ease;
   transition: color .2s ease;
@@ -98,14 +97,15 @@
   padding-left: 32px;
 }
 #cssmenu ul ul li a:hover {
-  color: #ffffff;
+  color: white ;
 }
 #cssmenu ul ul > li.has-sub > a:after {
-  top: 16px;
-  right: 26px;
-  background: #dddddd;
+  top: 0px;
+  right:0px;
+  background: white;
 }
 #cssmenu ul ul > li.has-sub > a:before {
-  top: 20px;
-  background: #dddddd;
+  top: 0px;
+  background: white ;
 }
+

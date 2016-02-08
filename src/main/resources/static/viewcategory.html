@@ -1,17 +1,30 @@
-
+ <head>
+<style>
+t{
+background:#bfdedf;
+height:100px
+}
+</style></head> 
 <body ng-controller="viewcategories">
-<table class="table table-bordered">
+<div class="panel panel-primary">
+<div class="panel-heading">
+<table>
 <thead>
-<tr>
-<th>category</th>
-</tr>
+
+<th>Categories</th>
+
+</thead>
+</table>
+</div>
+<div class="panel-body " >
+<table class="table table-condensed  ">
 <tbody ng-repeat="x in categories">
 <tr>
-<td>{{x.categoryname}}</td>
-<td><a href=#home>view</a></td>
-<td><a  href=#edit/{{categories.id}}>edit</a></td>
+<td align="center">{{x.categoryname}}</td>
 </tr>
 </tbody>
 </table>
+</div>
+</div>
 
 </body>

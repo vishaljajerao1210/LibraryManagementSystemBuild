@@ -14,92 +14,89 @@
  <script src="app.js"></script>
   
 		</head>
-		<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Library Management System</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li ><a href="#"></a></li>
-      <li><a href="#"></a></li>
-      <li><a href="#"></a></li> 
-      <li><a href="#"></a></li> 
-    </ul>
-  </div>
-</nav>
 		<body ng-app="app">
 			
-  <div class="col-sm-4">
-
-    
-     
+		<nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+        <div class="navbar-header">
+        <a class="navbar-brand" href="#">Library Management System</a>
+         </div>
+         </div>
+         </nav>
+         <div >
+        <div class="panel panel-default">
+		
+        <div class="panel-body " >
+        </div>
+  <div class="col-sm-4 ">
       <div id='cssmenu' >
 <ul>
   
-   <li class='has-sub'><a href='#view'>Admin</a>
+   <li class='has-sub' role="presentation"><a href='#view'>Admin</a>
       <ul>
       
-       <li><a href='#home'>Books</a>  
+       <li role="presentation"><a href='#home'>Books</a>  
            
          </li>
-         <li><a href='#add'>Add Category</a>
+         <li role="presentation"><a href='#add'>Add Category</a>
             
               <!--   <li><a href='/add'></a></li>-->
              
          </li>
-         <li><a href='#add1'>Add Book</a></li>
+         <li role="presentation"><a href='#add1'>Add Book</a></li>
            
               <!--   <li><a href='#'>Sub Product</a></li>-->
-            <li><a href='#fine'>Fine</a>  
+            <li role="presentation"><a href='#fine'>Fine</a>  
            
          </li>
       </ul>
    </li>
-   <li class='has-sub'><a href='#view'> Clerk</a>
+   <li class='has-sub' role="presentation"><a href='#view'> Clerk</a>
    <ul>
-       <li><a href='#home'>Books</a>  
+       <li role="presentation"><a href='#home'>Books</a>  
            
          </li>
-         <li><a href='#issuebook'>Issue Book</a>
+         <li role="presentation"><a href='#issuebook'>Issue Book</a>
             
               <!--   <li><a href='/add'></a></li>-->
              
          </li>
-         <li><a href='#'>Mark a Book</a></li>
+         <li role="presentation"><a href='#'>Mark a Book</a></li>
            
               <!--   <li><a href='#'>Sub Product</a></li>-->
-            <li ><a href='#track'>Track a Book</a>  
+            <li role="presentation" ><a href='#track'>Track a Book</a>  
            
          </li>
-          <li><a href='#'>Access History</a>  
+          <li role="presentation"><a href='#'>Access History</a>  
            
          </li>
-         <li><a href='#'>Fine</a>  
+         <li role="presentation"><a href='#fine'>Fine</a>  
            
          </li>
       </ul>
       </li>
-   <li class='has-sub'><a href='#view'>Member</a>
+   <li class='has-sub' role="presentation"><a href='#view'>Member</a>
    <ul>
-       <li><a href='#'>My Books</a>  
+       <li role="presentation"><a href='#'>My Books</a>  
            
          </li>
-         <li><a href='#'>search Book</a>
+         <li role="presentation"><a href='#'>search Book</a>
             
               <!--   <li><a href='/add'></a></li>-->
              
          </li>
       
-          <li><a href='#'>Access History</a>  
+          <li role="presentation"><a href='#'>Access History</a>  
            
          </li>
-         <li><a href='#'>Fine</a>  
+         <li role="presentation"><a href='#'>Fine</a>  
            
          </li>
       </ul>
       </li>
 </ul>
 </div>
+
      
     
 
@@ -114,7 +111,8 @@
 			 <div ng-view>
 				 
 			 </div>
-		
+		</div>
+			</div>
 			</div>
 			</div>
 			</body>

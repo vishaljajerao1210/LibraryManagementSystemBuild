@@ -1,14 +1,18 @@
 
 
 <body ng-controller="viewbooks">
-<table class="table table-bordered" style="width:100%";>
-<thead width="40%">
-<tr>
-<th>title</th>
-<th>author</th>
-<th>isbn</th>
-	</tr>
-</thead>
+<div class="panel panel-primary">
+<div class="panel-heading">
+<table class="table table-condensed">
+    <thead>
+        <th>title</th>
+        <th>author</th>
+        <th>isbn</th>
+	</thead>
+</table>
+</div>
+ <div class="panel-body " >
+<table class="table table-condensed">
 <tbody ng-repeat="x in books">
 <tr>
 <td>{{x.title}}</td>
@@ -18,7 +22,8 @@
 <td><a  href=#edit/{{books.id}}>edit</a></td>
 <td><a  href=#delete/{{books.id}}>delete</a></td>
 </tr>
-
-
-<</tbody>
+</tbody>
 </table>
+</div>
+</div> 
+</body>
