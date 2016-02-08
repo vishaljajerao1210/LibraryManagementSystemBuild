@@ -92,9 +92,6 @@ app.controller('viewbooks', [ '$scope','$rootScope','$http',  '$routeParams', fu
 		$http({
 			method : 'GET',
 			url :'/categories',
-			/*headers : {
-				'Authorization' : 'Basic ' + encodedAuthData
-			}*/
 		}).then(function(response) {
 			$rootScope.categories = response.data;
 		});
@@ -115,9 +112,6 @@ $scope.addcategory=function(){
 			method : 'POST',
 			url : '/addcategory',
 			data:$rootScope.categories
-			/*headers : {
-				'Authorization' : 'Basic ' + encodedAuthData
-			}*/
 		}).then(function(response) {
 			$rootScope.course = response.data;
 		});
@@ -135,9 +129,6 @@ $scope.addcategory=function(){
 			method : 'GET',
 			url : '/viewfine',
 		
-			/*headers : {
-				'Authorization' : 'Basic ' + encodedAuthData
-			}*/
 		}).then(function(response) {
 			$rootScope.finesview = response.data;
 		});
@@ -152,9 +143,7 @@ app.controller('trackctrl', [ '$scope','$rootScope','$http', function($scope, $r
 			method : 'GET',
 			url : '/track',
 			
-			/*headers : {
-				'Authorization' : 'Basic ' + encodedAuthData
-			}*/
+			
 		}).then(function(response) {
 			$rootScope.track = response.data;
 		});
@@ -171,9 +160,7 @@ app.controller('trackctrl', [ '$scope','$rootScope','$http', function($scope, $r
 			url : '/issuebook',
 			data:$rootScope.bookdetail
 			
-			headers : {
-				'Authorization' : 'Basic ' + encodedAuthData
-			}
+			
 		}).then(function(response) {
 			$rootScope.issue = response.data;
 		});

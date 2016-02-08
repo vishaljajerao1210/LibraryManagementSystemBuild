@@ -13,6 +13,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.JoinColumn;
 
 @Entity
@@ -23,6 +26,7 @@ public class Book {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	int bookid;
 	
+	@JsonIgnore
 	@ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(
 	            name = "books_category",
@@ -68,13 +72,12 @@ public class Book {
 			this.bookid = bookid;
 		}
 
-
+        
 		public List<Category> getCats() {
 			return cats;
 		}
 
-
-		public void setCats(List<Category> cats) {
+       		public void setCats(List<Category> cats) {
 			this.cats = cats;
 		}
 

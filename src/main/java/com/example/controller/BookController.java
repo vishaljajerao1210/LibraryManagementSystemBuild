@@ -32,7 +32,7 @@ public class BookController {
 	BookDetailRepository bookdetailrepository;
 	
 	@RequestMapping("/categories")
-	public List<Category> getCategories() {
+		public List<Category> getCategories() {
 		return (List<Category>) categoryrepository.findAll();
 	}	
 	
