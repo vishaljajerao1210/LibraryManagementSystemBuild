@@ -11,8 +11,9 @@ app.config(['$routeProvider','$httpProvider',
                templateUrl: 'addcategory.html',
                controller: 'addcategoryctrl'
              })
-              .when('/add1', {
-               templateUrl: 'addbook.html',
+             
+              .when('/new', {
+               templateUrl: 'newbook.html',
                controller: 'addbookctrl'
              })
              .when('/edit/:id',{
@@ -34,6 +35,10 @@ app.config(['$routeProvider','$httpProvider',
              .when('/track', {
                templateUrl: 'track.html',
                controller: 'trackctrl'
+             })
+              .when('/history', {
+               templateUrl: 'History.html',
+               controller: 'chistoryctrl'
              })
             //  .otherwise({
              // redirectTo: '/view'
@@ -62,6 +67,7 @@ app.controller('viewbooks', [ '$scope','$rootScope','$http',  '$routeParams', fu
 	
 	app.controller('addbookctrl', [ '$scope','$rootScope', '$http', function($scope,$rootScope, $http) {
 			$scope.title = 'Add new Task!';
+			/*$rootScope.categories={};*/
 	$rootScope.books= {};
 	$scope.savebook=function()
 	{
@@ -106,16 +112,22 @@ app.controller('viewbooks', [ '$scope','$rootScope','$http',  '$routeParams', fu
 
 app.controller('addcategoryctrl', [ '$scope','$rootScope','$http',  '$routeParams', function($scope, $rootScope, $http, $routeParams) {
 
-	$rootScope.categories={};
+/*	$rootScope.categories={};
 $scope.addcategory=function(){
 		$http({
 			method : 'POST',
 			url : '/addcategory',
 			data:$rootScope.categories
 		}).then(function(response) {
+			if(response.data.status){
+				alert('cat Added Successfully!');
+			}
+			else {
+				alert('cat Addition Failed!');
+			}
 			$rootScope.course = response.data;
 		});
-}
+}*/
 } ])
 
 
@@ -150,7 +162,7 @@ app.controller('trackctrl', [ '$scope','$rootScope','$http', function($scope, $r
 
 } ])
 
-/*app.controller('issuebookctrl', [ '$scope','$rootScope','$http', function($scope, $rootScope, $http) {
+app.controller('issuebookctrl', [ '$scope','$rootScope','$http', function($scope, $rootScope, $http) {
 
 	$rootScope.bookdetail={};
 	$scope.addcategory=function(){
@@ -164,6 +176,20 @@ app.controller('trackctrl', [ '$scope','$rootScope','$http', function($scope, $r
 		}).then(function(response) {
 			$rootScope.issue = response.data;
 		});
+	}
+} ]);
+
+app.controller('chistoryctrl', [ '$scope','$rootScope','$http', function($scope, $rootScope, $http) {
+
+
+
+	$http({
+		method : 'GET',
+		url : '/member',
+				
+	}).then(function(response) {
+		$rootScope.history = response.data;
+	});
 
 } ])
-*/
+

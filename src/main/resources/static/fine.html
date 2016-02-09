@@ -1,21 +1,19 @@
 
 
 <body ng-controller="viewfinectrl">
-
-
-<div class="row">
-<div class="container">
-<div class="col-md-8">
- <div class="col-md-offset-4">
-<table class="table table-bordered" style="width:100%";>
-<thead width="40%">
-<tr>
+ <div class="panel panel-primary">
+<div class="panel-heading">
+<table class="table table-bordered" style="width:100%">
+<thead>
 <th>Id</th>
 <th>numberOfDays</th>
 <th>Amount</th>
-					
-</tr>
 </thead>
+</table>
+</div>
+
+<div class="panel-body">
+<table class="table table-bordered" style="width:100%">
 <tbody ng-repeat="x in finesview">
 <tr>
 <td>{{x.id}}</td>
@@ -24,12 +22,6 @@
 <td><a href=#view/{{books.id}}>view</a></td>
 		</div>
 		</div>
-		</div>
-		</div>
-
-
-
-
-
-
+		</tbody>
+				</table>
 </body>

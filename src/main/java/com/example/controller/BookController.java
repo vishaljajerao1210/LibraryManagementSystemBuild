@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.util.HashMap;
 //import java.util.HashMap;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import com.example.repositories.BookDetailRepository;
 import com.example.repositories.BookRepository;
 import com.example.repositories.CategoryRepository;
 import com.example.repositories.FineRepository;
+import com.example.repositories.MemberRepository;
 
 @RestController
 public class BookController {
@@ -30,6 +32,8 @@ public class BookController {
 	FineRepository finerepository;
 	@Autowired
 	BookDetailRepository bookdetailrepository;
+	@Autowired
+	MemberRepository memberrespository;
 	
 	@RequestMapping("/categories")
 		public List<Category> getCategories() {
@@ -53,9 +57,57 @@ public class BookController {
 	
 	@RequestMapping("/issuebook/{id}")
 	public List<BookDetail> getBookDetail(@PathVariable("id") int id) {
-		return (List<BookDetail>) bookdetailrepository.findAll();
+		return (List<BookDetail>) bookdetailrepository.findOne(id);
 	}	
 	
+	@RequestMapping("/member")
+	public List<BookDetail> getBookDetails(@PathVariable("id") int id)
+	{
+		return (List<BookDetail>) bookdetailrepository.findOne(id);
+	}
 	
+	@RequestMapping("/addcategory")
+	public HashMap<String,Object> addcategory(@RequestBody Category category) {
+		HashMap<String, Object> returnParams = new HashMap<String, Object>();
+		
+		try {
+			categoryrepository.save(category);
+			returnParams.put("status", true);
+		} catch (Exception e) {
+			returnParams.put("status", false);
+			returnParams.put("msg", "Failed to add Category!!");
+		}
+
+		return returnParams;
+	}
 	
+	@RequestMapping("/addbook")
+	public HashMap<String,Object> addbook(@RequestBody Book book) {
+		HashMap<String, Object> returnParams = new HashMap<String, Object>();
+		
+		try {
+			bookrepository.save(book);
+			returnParams.put("status", true);
+		} catch (Exception e) {
+			returnParams.put("status", false);
+			returnParams.put("msg", "Failed to add book!!!!!!");
+		}
+
+		return returnParams;
+	}
+	
+	@RequestMapping("/savemember")
+	public HashMap<String,Object> addmember(@RequestBody Member mem) {
+		HashMap<String, Object> returnParams = new HashMap<String, Object>();
+		
+		try {
+			memberrespository.save(mem);
+			returnParams.put("status", true);
+		} catch (Exception e) {
+			returnParams.put("status", false);
+			returnParams.put("msg", "Failed to Register the user!!!!!!");
+		}
+
+		return returnParams;
+	}
 }
