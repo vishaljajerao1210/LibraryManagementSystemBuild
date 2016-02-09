@@ -35,6 +35,10 @@ app.config(['$routeProvider','$httpProvider',
                templateUrl: 'track.html',
                controller: 'trackctrl'
              })
+              .when('/viewbook/:categoryId', {
+               templateUrl: 'viewbook.html',
+               controller: 'viewbookctrl'
+             })
             //  .otherwise({
              // redirectTo: '/view'
             // });
@@ -56,6 +60,7 @@ app.controller('viewbooks', [ '$scope','$rootScope','$http',  '$routeParams', fu
 		});
 
 } ])
+
 
 
 
@@ -88,7 +93,7 @@ app.controller('viewbooks', [ '$scope','$rootScope','$http',  '$routeParams', fu
 	app.controller('viewcategories', [ '$scope','$rootScope','$http',  '$routeParams', function($scope, $rootScope, $http, $routeParams) {
 
 	$scope.title = 'List of Categories';
-
+    
 		$http({
 			method : 'GET',
 			url :'/categories',
@@ -121,7 +126,7 @@ $scope.addcategory=function(){
 
 	
 	
-	app.controller('viewfinectrl', [ '$scope','$rootScope','$http',  '$routeParams', function($scope, $rootScope, $http, $routeParams) {
+app.controller('viewfinectrl', [ '$scope','$rootScope','$http',  '$routeParams', function($scope, $rootScope, $http, $routeParams) {
 
 
 
@@ -149,6 +154,22 @@ app.controller('trackctrl', [ '$scope','$rootScope','$http', function($scope, $r
 		});
 
 } ])
+
+	app.controller('viewbookctrl', [ '$scope','$rootScope','$http',  '$routeParams', function($scope, $rootScope, $http, $routeParams) {
+
+	$scope.title = 'List of Books..!';
+	
+	$http({
+		method : 'GET',
+		url :'/categories',
+	}).then(function(response) {
+		$rootScope.categories = response.data;
+	});
+	
+	$scope.index=$rootScope.categories[$routeParams.categoryId];
+    
+} ])
+
 
 /*app.controller('issuebookctrl', [ '$scope','$rootScope','$http', function($scope, $rootScope, $http) {
 

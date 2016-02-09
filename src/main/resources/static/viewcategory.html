@@ -16,11 +16,13 @@ height:100px
 </thead>
 </table>
 </div>
-<div class="panel-body " >
+<div class="panel-body ">
 <table class="table table-condensed  ">
 <tbody ng-repeat="x in categories">
 <tr>
-<td align="center">{{x.categoryname}}</td>
+<td>{{x.categoryname}}</td>
+<td><a href=#viewbook/{{$index}}>View Books</a></td>
+<td>Edit</td>
 </tr>
 </tbody>
 </table>
