@@ -40,6 +40,11 @@ app.config(['$routeProvider','$httpProvider',
                templateUrl: 'History.html',
                controller: 'chistoryctrl'
              })
+             .when('/viewbook/:categoryId', {
+               templateUrl: 'viewbook.html',
+               controller: 'viewbookctrl'
+             })
+             
             //  .otherwise({
              // redirectTo: '/view'
             // });
@@ -191,5 +196,20 @@ app.controller('chistoryctrl', [ '$scope','$rootScope','$http', function($scope,
 		$rootScope.history = response.data;
 	});
 
+} ])
+
+app.controller('viewbookctrl', [ '$scope','$rootScope','$http',  '$routeParams', function($scope, $rootScope, $http, $routeParams) {
+
+	$scope.title = 'List of Books..!';
+	
+	$http({
+		method : 'GET',
+		url :'/categories',
+	}).then(function(response) {
+		$rootScope.categories = response.data;
+	});
+	
+	$scope.index=$rootScope.categories[$routeParams.categoryId];
+    
 } ])
 
