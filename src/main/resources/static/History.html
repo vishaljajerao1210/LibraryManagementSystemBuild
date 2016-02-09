@@ -1,0 +1,26 @@
+<form>
+                                <input type="text" placeholder="Search by member id" required>
+                                <input type="button" value="Search" href=#memhistory>
+                                
+</form>
+<div class="panel panel-primary">
+<div class="panel-heading">
+ <table>
+ <thead>
+ <th>
+ #</th>
+ <th>
+ MEMBER</th>
+ </thead>
+ </table>
+ <div class="panel-body">
+ <table>
+ <tbody ng-repeat="member in history">
+ <tr>
+ <td>{{member.memid}}</td>
+  <td>{{member.firstName}}</td>
+  <td><a href=#view/{{bookdetail.id}}>view</a></td>
+  </tr>
+ </tbody>
+ </table></div>
+ </div></div>
