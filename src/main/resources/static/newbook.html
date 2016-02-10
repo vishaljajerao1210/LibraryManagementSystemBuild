@@ -1,14 +1,3 @@
-<head>
-<title>Bootstrap Example</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-</head>
 <body ng-controller="addbookctrl">
 	<div class="row">
 		<div class="container ">
@@ -19,15 +8,15 @@
 						type="button" value="Search" href=#memhistory> <br> <br>
 					<form>
 						<label>ISBN</label><input type="text" id="isbn"
-							class="form-control" ng-model="book.isbn" /> <label>TITLE</label><input
-							type="text" id="title" class="form-control" ng-model="book.title" />
+							class="form-control" ng-model="books.isbn" /> <label>TITLE</label><input
+							type="text" id="title" class="form-control" ng-model="books.title" />
 
 						<label>AUTHOR</label> <input type="text" id="author"
-							class="form-control" ng-model="book.author" /> <br> <label>Quantity</label><input
+							class="form-control" ng-model="books.author" /> <br> <label>Quantity</label><input
 							type="number" id="quantity" class="form-control"
-							ng-model="book.quantity" /> <br> <label>Categories</label>
+							ng-model="books.quantity" /> <br> <label>Categories</label>
 						<div ng-repeat="y in categories">
-							<input type="checkbox" ng-model="book.cats.categoryName">{{y.categoryName}}</input>
+							<input type="checkbox">{{y.categoryname}}</input>
 
 						</div>
 						<br> <br>
@@ -53,7 +42,7 @@
 				<div class="modal-body">
 					<form ng-submit="addcategory()">
 						Category Name<input type="text" id="categoryname"
-							class="form-control" ng-model="categories.categoryName" /> <br>
+							class="form-control" ng-model="categories.categoryname" /> <br>
 						<br>
 						<button class="btn btn-primary" type="submit">Add</button>
 					</form>
@@ -61,8 +50,5 @@
 			</div>
 		</div>
 	</div>
-
-
-
 
 </body>

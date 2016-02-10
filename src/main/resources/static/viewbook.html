@@ -1,10 +1,9 @@
 <!-- View Book By Category -->
 
 <body ng-controller="viewbookctrl">
-<h2>{{title}}</h2>
 
 <div style="padding-bottom:12px">
-<h2 style="color:red">{{index.categoryname}}</h2>
+<h2 style="color:red">List of books in {{index.categoryname}}</h2>
 
 </div>
 
@@ -24,9 +23,7 @@
 <td>{{x.title}}</td>
 <td>{{x.author}}</td>
 <td>{{x.isbn}}</td>
-<td><a href=#view/{{books.id}}>view</a></td>
-<td><a  href=#edit/{{books.id}}>edit</a></td>
-<td><a  href=#delete/{{books.id}}>delete</a></td>
+
 </tr>
 </tbody>
 </table>
