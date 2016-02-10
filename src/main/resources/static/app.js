@@ -117,7 +117,7 @@ app.controller('viewbooks', [ '$scope','$rootScope','$http',  '$routeParams', fu
 
 app.controller('addcategoryctrl', [ '$scope','$rootScope','$http',  '$routeParams', function($scope, $rootScope, $http, $routeParams) {
 
-/*	$rootScope.categories={};
+	$rootScope.categories={};
 $scope.addcategory=function(){
 		$http({
 			method : 'POST',
@@ -130,9 +130,9 @@ $scope.addcategory=function(){
 			else {
 				alert('cat Addition Failed!');
 			}
-			$rootScope.course = response.data;
+			/*$rootScope.course = response.data;*/
 		});
-}*/
+}
 } ])
 
 
