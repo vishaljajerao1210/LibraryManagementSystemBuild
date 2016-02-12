@@ -17,8 +17,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Quantity {
     
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	int accountId;
+	String accountId;
 	
 	@ManyToOne
 	@JsonIgnore
@@ -27,11 +26,11 @@ public class Quantity {
 	@Enumerated(EnumType.STRING)
     private Status status;
 
-	public int getAccountId() {
+	public String getAccountId() {
 		return accountId;
 	}
 
-	public void setAccountId(int accountId) {
+	public void setAccountId(String accountId) {
 		this.accountId = accountId;
 	}
 

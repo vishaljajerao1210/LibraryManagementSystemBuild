@@ -1,20 +1,25 @@
 package com.example.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 //import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
+import org.neo4j.cypher.internal.compiler.v2_2.replace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.Status;
 import com.example.model.Book;
 import com.example.model.BookDetail;
 import com.example.model.Category;
 import com.example.model.Fine;
 import com.example.model.Member;
+import com.example.model.Quantity;
 import com.example.repositories.BookDetailRepository;
 import com.example.repositories.BookRepository;
 import com.example.repositories.CategoryRepository;
@@ -102,6 +107,45 @@ public class BookController {
 		HashMap<String, Object> returnParams = new HashMap<String, Object>();
 		
 		try {
+			
+			
+			
+		
+			
+			
+			int j=book.getCopies();
+			List<Quantity>account=new ArrayList<Quantity>();
+			int i=1;
+			while(i<=j)
+			{
+				
+				Quantity a=new Quantity();
+					
+					
+				
+					UUID uuid=UUID.randomUUID();
+					String randomNo = uuid.toString();
+					randomNo=randomNo.replace("-", "");
+					for(i=0;i<randomNo.length();i++){
+						char ch=randomNo.charAt(i);
+						if((randomNo.charAt(i)>='a' && randomNo.charAt(i)<='z') || (randomNo.charAt(i)>='A' && randomNo.charAt(i)<='Z'))
+						{
+							
+						}
+							
+					}
+					a.setAccountId(randomNo);
+					
+					a.setStatus(Status.Available);
+					a.setBook(book);
+					account.add(a);
+				i++;
+		}
+			book.setQuantity(account);
+			
+			
+			
+			
 			bookrepository.save(book);
 			returnParams.put("status", true);
 		} catch (Exception e) {
