@@ -66,16 +66,7 @@ public class BookController {
 		return (List<BookDetail>) bookdetailrepository.findOne(id);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	
 	@RequestMapping("/addCategory")
 	public HashMap<String,Object> addcategory(@RequestBody Category category) {
@@ -104,6 +95,8 @@ public class BookController {
 	
 	
 	
+	
+	
 	@RequestMapping("/addBook")
 	public HashMap<String,Object> addbook(@RequestBody Book book) {
 		HashMap<String, Object> returnParams = new HashMap<String, Object>();
@@ -118,6 +111,17 @@ public class BookController {
 
 		return returnParams;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping("/savemember")
 	public HashMap<String,Object> addmember(@RequestBody Member mem) {

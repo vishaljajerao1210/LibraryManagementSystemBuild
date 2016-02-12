@@ -1,18 +1,20 @@
+<!-- Adding a new Book -->
+
 <body ng-controller="addbookctrl">
 	<div class="row">
 		<div class="container ">
 			<div class="col-md-8">
 				<div class="col-md-offset-4 ">
 
-					<input type="text" placeholder="Search" required> <input
-						type="button" value="Search" href=#memhistory> <br> <br>
+					<input type="text" placeholder="Search" required> 
+					<input type="button" value="Search" href=#memhistory> <br> <br>
 					<form>
 						<label>ISBN</label><input type="text" id="isbn"
 							class="form-control" ng-model="books.isbn" /> <label>TITLE</label><input
-							type="text" id="title" class="form-control" ng-model="books.title" />
-
-						<label>AUTHOR</label> <input type="text" id="author"
-							class="form-control" ng-model="books.author" /> <br> <label>Quantity</label><input
+							type="text" id="title" class="form-control"
+							ng-model="books.title" /> <label>AUTHOR</label> <input
+							type="text" id="author" class="form-control"
+							ng-model="books.author" /> <br> <label>Quantity</label><input
 							type="number" id="quantity" class="form-control"
 							ng-model="books.quantity" /> <br> <label>Categories</label>
 						<div ng-repeat="y in categories">
@@ -21,10 +23,13 @@
 						</div>
 						<br> <br>
 
-						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+						<button type="button" class="btn btn-info btn-lg"
+							data-toggle="modal" data-target="#myModal">
 							<a href="">New Category</a>
 						</button>
-						<input type="submit" class="btn btn-primary" value="add" />
+
+						<button class="btn btn-primary" type="submit" ng-click="savebook()">Add a book</button>
+
 					</form>
 				</div>
 			</div>
@@ -44,7 +49,7 @@
 						Category Name<input type="text" id="categoryname"
 							class="form-control" ng-model="categories.categoryname" /> <br>
 						<br>
-						<button class="btn btn-primary" type="submit">Add</button>
+						<button class="btn btn-primary" type="submit" data-dismiss="modal">Add</button>
 					</form>
 				</div>
 			</div>

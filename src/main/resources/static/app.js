@@ -74,28 +74,25 @@ app.controller('addbookctrl', [ '$scope','$rootScope', '$http', function($scope,
 	$scope.title = 'Add new Book!';
 	$rootScope.books= {};
 
-	/*$http({
+	
+	$http({
 		method : 'GET',
-		url :'/addBook',
-		data:$rootScope.books
+		url :'/categories',
 	}).then(function(response) {
-		$rootScope.s = response.data;
+		$rootScope.categories = response.data;
 	});
 
-*/
+	
 	$scope.savebook=function()
 	{
 		$http({
 			method: 'POST',
-			url : '/addbook',
-
+			url : '/addBook',
 			data : $rootScope.books
-
 		}).then(function(response){
 			if(response.data.status){
 				alert('book Added Successfully!');
-				/*$rootScope.course = {};*/
-			} else {
+				} else {
 				alert('book Addition Failed!');
 			}
 		})
