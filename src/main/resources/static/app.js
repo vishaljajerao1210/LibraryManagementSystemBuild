@@ -194,10 +194,10 @@ $scope.state={};
 	$scope.fetchbytitle=function()
 	{
 		
-	var status=$scope.state.title;
+	//var status=$scope.state.title;
 		$http({
 			method : 'GET',
-			url : '/searchbytitle/'+status,
+			url : '/searchbytitle/'+$scope.state.title,
 			/*headers : {
 					'Authorization' : 'Basic ' + encodedAuthData
 				}*/
@@ -207,16 +207,25 @@ $scope.state={};
 	}
 	
 	$rootScope.bookdetail={};
-	$scope.addcategory=function(){
-		/*$http({
+	$rootScope.bookdetail.quantity=[];
+	$rootScope.bookdetail.members=[];
+	$scope.issueBook=function(){
+		$rootScope.bookdetail.quantity.push($scope.ab);
+		$rootScope.bookdetail.members.push($scope.cd);
+		$http({
 			method : 'POST',
-			url : '/issuebook',
+			url : '/abc',
 			data:$rootScope.bookdetail
 
 
 		}).then(function(response) {
-			$rootScope.issue = response.data;
-		});*/
+			if(response.data.status){
+				alert('issued Successfully!');
+			}
+			else {
+				alert('issuing Failed!');
+			}
+		});
 	}
 } ]);
 

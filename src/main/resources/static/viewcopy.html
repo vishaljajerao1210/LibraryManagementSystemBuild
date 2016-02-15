@@ -1,0 +1,27 @@
+
+<body ng-controller="viewcopyctrl">
+<br />
+<br />
+<br /><br />
+<br /><br />
+
+<h2>Its working</h2>
+<h2>{{title}}</h2>
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>accountid</th>
+<th>status</th>
+<th>delete</th>
+</tr>
+<tbody ng-repeat="y in x.quantity">
+<tr>
+<td>{{y.accountId}}</td>
+<td>{{y.status}}</td>
+<td><button ng-click="delete(y)" class="btn btn-primary">delete</button></td>
+</tr>
+</tbody>
+
+</table>
+</body>
+</html>

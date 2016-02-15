@@ -1,12 +1,14 @@
 package com.example.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.example.Status;
@@ -23,6 +25,10 @@ public class Quantity {
 	@JsonIgnore
 	Book book;
 	
+	@OneToMany(fetch = FetchType.EAGER,orphanRemoval=true)
+	@JsonIgnore
+	List<BookDetail> bookdetail;
+	
 	@Enumerated(EnumType.STRING)
     private Status status;
 
@@ -32,6 +38,17 @@ public class Quantity {
 
 	public void setAccountId(String accountId) {
 		this.accountId = accountId;
+	}
+
+	
+	
+
+	public List<BookDetail> getBookdetail() {
+		return bookdetail;
+	}
+
+	public void setBookdetail(List<BookDetail> bookdetail) {
+		this.bookdetail = bookdetail;
 	}
 
 	public Book getBook() {

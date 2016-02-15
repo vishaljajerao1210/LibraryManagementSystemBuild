@@ -9,8 +9,7 @@
                                 <input type="button" value="Search" href=#view>
                                 </form>
 				  <form>
-<!-- 	                    	<b>BookId</b><input type="text" id="bid" class="form-control"
-				ng-model="books.id"/> -->	
+	
 				
 				
 				
@@ -27,7 +26,7 @@
 				
 				
 		
-		<b>Copies</b><select class="form-control">
+		<b>Copies</b><select class="form-control" ng-model="ab.accountId">
 				<option  ng-repeat="book in books.quantity"  value="{{book.accountId}}">{{book.accountId}}
 				</option></select>
 		
@@ -37,15 +36,17 @@
 							<br>
 				
 				
-				<b>Member Id</b><select>
+				<b>Member Id</b>
+				<input type="text" ng-model="cd.memberId">
+				<!-- <select class="form-control" ng-model="bookdetails.members.memberId">
 <option  ng-repeat="member in member"  value="{{mem.memId}}">
 </option>
 
-</select>	<br>
+</select> -->	<br>
 <br>
 <br>
 
-	<input type="submit" class="btn btn-primary" value="Issue"/>
+	<input type="submit" class="btn btn-primary" ng-click="issueBook()" value="Issue"/>
 		</form>
 		</div>
 		</div>

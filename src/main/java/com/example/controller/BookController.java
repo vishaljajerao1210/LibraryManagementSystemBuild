@@ -2,6 +2,7 @@ package com.example.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 //import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -77,10 +78,10 @@ public class BookController {
 		return (List<Book>) bookrepository.findOne(isbn);
 	}	
 	
-	@RequestMapping("/issuebook/{id}")
+	/*@RequestMapping("/issuebook/{id}")
 	public List<BookDetail> getBookDetail(@PathVariable("id") int id) {
 		return (List<BookDetail>) bookdetailrepository.findOne(id);
-	}	
+	}	*/
 	
 	@RequestMapping("/member")
 	public List<BookDetail> getBookDetails(@PathVariable("id") int id)
@@ -204,4 +205,32 @@ public Book searchbookbytitle(@PathVariable("title") String title)
 	return bookrepository.findByTitle(title);
 	
 }
+
+@RequestMapping("/bookdetails")
+public List<BookDetail> bookdetail()
+{
+	return (List<BookDetail>) bookdetailrepository.findAll();
+}	
+	
+
+
+@RequestMapping("/abc")
+public HashMap<String,Object> issubook(@RequestBody BookDetail bookdetail ) {
+	HashMap<String, Object> returnParams = new HashMap<String, Object>();
+	
+	try {
+
+		
+		
+		bookdetailrepository.save(bookdetail);
+		returnParams.put("status", true);
+	} catch (Exception e) {
+		returnParams.put("status", false);
+		returnParams.put("msg", "Failed to issue!!!!!!");
+	}
+
+	return returnParams;
+}
+
+
 }
