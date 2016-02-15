@@ -6,4 +6,6 @@ import com.example.model.Book;
 
 public interface BookRepository extends JpaRepository<Book, Integer> {
 
+	public Book findByTitle(String title);
+	
 }

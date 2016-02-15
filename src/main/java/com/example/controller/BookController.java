@@ -25,6 +25,7 @@ import com.example.repositories.BookRepository;
 import com.example.repositories.CategoryRepository;
 import com.example.repositories.FineRepository;
 import com.example.repositories.MemberRepository;
+import com.example.repositories.QuantityRepository;
 
 @RestController
 public class BookController {
@@ -39,6 +40,8 @@ public class BookController {
 	BookDetailRepository bookdetailrepository;
 	@Autowired
 	MemberRepository memberrespository;
+	@Autowired
+	QuantityRepository quantityrepository;
 	
 	@RequestMapping("/categories")
 		public List<Category> getCategories() {
@@ -49,6 +52,20 @@ public class BookController {
 	public List<Book> getBooks() {
 		return (List<Book>) bookrepository.findAll();
 	}	
+	
+	@RequestMapping("/book/{bookid}")
+	public Book get(@PathVariable("bookid") int bookid)
+	{
+		return bookrepository.findOne(bookid);
+		
+	}
+	@RequestMapping("/deletecopy/{accountid}")
+	public void delete(@PathVariable("bookid")String accountid)
+	{
+		quantityrepository.delete(accountid);
+	}
+	
+	
 	
 	@RequestMapping("/viewfine")
 	public List<Fine> getfine() {
@@ -126,25 +143,15 @@ public class BookController {
 					UUID uuid=UUID.randomUUID();
 					String randomNo = uuid.toString();
 					randomNo=randomNo.replace("-", "");
-					for(i=0;i<randomNo.length();i++){
-						char ch=randomNo.charAt(i);
-						if((randomNo.charAt(i)>='a' && randomNo.charAt(i)<='z') || (randomNo.charAt(i)>='A' && randomNo.charAt(i)<='Z'))
-						{
-							
-						}
-							
-					}
-					a.setAccountId(randomNo);
 					
+					a.setAccountId(randomNo);					
 					a.setStatus(Status.Available);
 					a.setBook(book);
 					account.add(a);
 				i++;
 		}
 			book.setQuantity(account);
-			
-			
-			
+						
 			
 			bookrepository.save(book);
 			returnParams.put("status", true);
@@ -181,4 +188,20 @@ public class BookController {
 
 		return returnParams;
 	}
+
+
+
+
+
+
+
+
+
+
+@RequestMapping("/searchbytitle/{title}")
+public Book searchbookbytitle(@PathVariable("title") String title)
+{
+	return bookrepository.findByTitle(title);
+	
+}
 }

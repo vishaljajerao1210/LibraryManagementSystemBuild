@@ -9,20 +9,38 @@
                                 <input type="button" value="Search" href=#view>
                                 </form>
 				  <form>
-	                    	<b>BookId</b><input type="text" id="bid" class="form-control"
-				ng-model="books.id"/>	
+<!-- 	                    	<b>BookId</b><input type="text" id="bid" class="form-control"
+				ng-model="books.id"/> -->	
+				
+				
+				
+				
+		<b>TITLE</b><select class="form-control" ng-model="state.title">
+				<option  ng-repeat="book in books"  value="{{book.title}}">{{book.title}}
+				</option>
+				</select>
+			 <button ng-click="fetchbytitle()">Fetch</button>
+				 
 				
 				<b>ISBN</b><input type="text" id="isbn" class="form-control"
 				ng-model="books.isbn"/>
-		<b>TITLE</b><input type="text" id="title" class="form-control"
-				ng-model="books.title"/>
+				
+				
+		
+		<b>Copies</b><select class="form-control">
+				<option  ng-repeat="book in books.quantity"  value="{{book.accountId}}">{{book.accountId}}
+				</option></select>
+		
 				
 			<b>AUTHOR</b>	<input type="text" id="author" class="form-control"
 				ng-model="books.author"/>
 							<br>
+				
+				
 				<b>Member Id</b><select>
 <option  ng-repeat="member in member"  value="{{mem.memId}}">
 </option>
+
 </select>	<br>
 <br>
 <br>

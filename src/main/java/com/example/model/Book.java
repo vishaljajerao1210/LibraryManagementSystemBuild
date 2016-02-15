@@ -26,7 +26,7 @@ public class Book {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	int bookid;
 	
-	@JsonIgnore
+    @JsonIgnore
 	@ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(
 	            name = "books_category",

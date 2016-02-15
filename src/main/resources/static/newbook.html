@@ -36,7 +36,7 @@
 		</div>
 	</div>
 
-	<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal fade" id="myModal" role="dialog" ng-controller="addcategoryctrl">
 		<div class="modal-dialog">
 			<!-- Modal content-->
 			<div class="modal-content">
@@ -45,11 +45,11 @@
 					<h4 class="modal-title">Add Category</h4>
 				</div>
 				<div class="modal-body">
-					<form ng-submit="addcategory()">
-						Category Name<input type="text" id="categoryname"
-							class="form-control" ng-model="categories.categoryname" /> <br>
-						<br>
-						<button class="btn btn-primary" type="submit" data-dismiss="modal">Add</button>
+					Category Name<input type="text" id="categoryname"
+								class="form-control" ng-model="categories.categoryname" /> <br>
+							<br>
+						<button class="btn btn-primary" type="submit"
+								ng-click="addcategoryy()" data-dismiss="modal">Add</button>
 					</form>
 				</div>
 			</div>

@@ -24,10 +24,13 @@ app.config(['$routeProvider','$httpProvider',
 		templateUrl: 'viewcategory.html',
 		controller: 'viewcategories'
 	})
+	
 	.when('/fine', {
 		templateUrl: 'fine.html',
 		controller: 'viewfinectrl'
 	})
+	
+	
 	.when('/issuebook', {
 		templateUrl: 'issuebook.html',
 		controller: 'issuebookctrl'
@@ -43,6 +46,13 @@ app.config(['$routeProvider','$httpProvider',
 	.when('/viewbook/:categoryId', {
 		templateUrl: 'viewbook.html',
 		controller: 'viewbookctrl'
+	})
+	
+	
+	
+	.when('/viewcopy/:bookid', {
+		templateUrl: 'viewcopy.html',
+		controller: 'viewcopyctrl'
 	})
 
 	// .otherwise({
@@ -82,6 +92,7 @@ app.controller('addbookctrl', [ '$scope','$rootScope', '$http', function($scope,
 		$rootScope.categories = response.data;
 	});
 
+	
 	
 	$scope.savebook=function()
 	{
@@ -169,10 +180,35 @@ app.controller('trackctrl', [ '$scope','$rootScope','$http', function($scope, $r
 } ])
 
 app.controller('issuebookctrl', [ '$scope','$rootScope','$http', function($scope, $rootScope, $http) {
-
+$scope.state={};
+	
+	$http({
+		method : 'GET',
+		url : '/books',
+		/*headers : {
+				'Authorization' : 'Basic ' + encodedAuthData
+			}*/
+	}).then(function(response) {
+		$rootScope.books= response.data;
+	});
+	$scope.fetchbytitle=function()
+	{
+		
+	var status=$scope.state.title;
+		$http({
+			method : 'GET',
+			url : '/searchbytitle/'+status,
+			/*headers : {
+					'Authorization' : 'Basic ' + encodedAuthData
+				}*/
+		}).then(function(response) {
+			$rootScope.books= response.data;
+		});
+	}
+	
 	$rootScope.bookdetail={};
 	$scope.addcategory=function(){
-		$http({
+		/*$http({
 			method : 'POST',
 			url : '/issuebook',
 			data:$rootScope.bookdetail
@@ -180,7 +216,7 @@ app.controller('issuebookctrl', [ '$scope','$rootScope','$http', function($scope
 
 		}).then(function(response) {
 			$rootScope.issue = response.data;
-		});
+		});*/
 	}
 } ]);
 
@@ -213,3 +249,31 @@ app.controller('viewbookctrl', [ '$scope','$rootScope','$http',  '$routeParams',
 
 } ])
 
+
+
+
+app.controller('viewcopyctrl', [ '$scope','$rootScope','$http',  '$routeParams', function($scope, $rootScope, $http, $routeParams) {
+
+	$scope.title = 'Copies of book';
+
+	$http({
+		method : 'GET',
+		url :'/book/'+ $routeParams.bookid,
+	}).then(function(response) {
+		$rootScope.x = response.data;
+	});
+
+	
+	$scope.delete=function(quantity)
+	{
+		$rootScope.x.quantity.splice(indexOf(quantity),1);
+		  $http.delete('/deletecopy'+quantity.accountid)
+          .success(function (data, status, headers) {
+              alert("deleted successfully");
+          })
+          .error(function (data, status, header, config) {
+              alert("deleted failed");
+          });
+	}
+
+} ])
