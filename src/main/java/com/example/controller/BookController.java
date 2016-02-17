@@ -1,6 +1,10 @@
 package com.example.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 //import java.util.HashMap;
@@ -109,7 +113,34 @@ public class BookController {
 	
 
 	
-	
+	@RequestMapping("/addcopy1/{bookid}")
+	public HashMap<String,Object>addcopy(@PathVariable("bookid") int bookid) {
+		HashMap<String, Object> returnParams = new HashMap<String, Object>();
+		try
+		{
+			Quantity qu=new Quantity();
+			UUID uuid=UUID.randomUUID();
+			String randomNo = uuid.toString();
+			randomNo=randomNo.replace("-", "");
+			
+			qu.setAccountId(randomNo);					
+			qu.setStatus(Status.Available);
+			Book book=bookrepository.findOne(bookid);
+			int j=book.getCopies();
+			j++;
+			book.setCopies(j);
+			qu.setBook(book);
+			quantityrepository.save(qu);
+			returnParams.put("status", true);
+			
+		} catch (Exception e) {
+			returnParams.put("status", false);
+			returnParams.put("msg", "Failed to add Category!!");
+		}
+
+		return returnParams;
+		
+	}	
 	
 	
 	
@@ -202,16 +233,39 @@ public class BookController {
 @RequestMapping("/searchbytitle/{title}")
 public Book searchbookbytitle(@PathVariable("title") String title)
 {
-	return bookrepository.findByTitle(title);
-	
+	return bookrepository.findByTitle(title);	
 }
+
 
 @RequestMapping("/bookdetails")
 public List<BookDetail> bookdetail()
 {
 	return (List<BookDetail>) bookdetailrepository.findAll();
 }	
+
+
+
+
+
+
+@RequestMapping("/quantity")
+public List<Quantity> quantity()
+{
+	return (List<Quantity>) quantityrepository.findAll();
+}
 	
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @RequestMapping("/abc")
@@ -220,17 +274,74 @@ public HashMap<String,Object> issubook(@RequestBody BookDetail bookdetail ) {
 	
 	try {
 
-		
+		Date today = new Date();
+		    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+		    today = sdf.parse(sdf.format(today));
+		    bookdetail.setIssueDate(today);
+		    Calendar c = Calendar.getInstance();
+		    c.setTime(today); // Now use today date.
+		    c.add(Calendar.DATE, 5); // Adding 5 days
+		    Date after = c.getTime();
+		    bookdetail.setDueDate(after);
+		   String s=bookdetail.getQuantity().getAccountId();
+		   Quantity q=quantityrepository.findOne(s);
+		   q.setStatus(Status.Unavailable);
+		   quantityrepository.save(q);
 		
 		bookdetailrepository.save(bookdetail);
 		returnParams.put("status", true);
 	} catch (Exception e) {
 		returnParams.put("status", false);
-		returnParams.put("msg", "Failed to issue!!!!!!");
+		returnParams.put("msg", "Failed o issue!!!!!!");
+		e.printStackTrace();
 	}
 
 	return returnParams;
 }
 
 
+
+@RequestMapping("/members")
+public List<Member>getMembers()
+{
+	return (List<Member>)memberrespository.findAll();
 }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@RequestMapping("/markabook/{accountid}")
+public HashMap<String,Object>markbook(@PathVariable("accountid") String accountid) {
+	HashMap<String, Object> returnParams = new HashMap<String, Object>();
+	
+	
+		returnParams.put("status", true);
+	} catch (Exception e) {
+		returnParams.put("status", false);
+		returnParams.put("msg", "Failed to add Category!!");
+	}
+
+	return returnParams;
+	
+}	
+
+
+
+
+

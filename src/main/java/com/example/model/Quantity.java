@@ -25,7 +25,7 @@ public class Quantity {
 	@JsonIgnore
 	Book book;
 	
-	@OneToMany(fetch = FetchType.EAGER,orphanRemoval=true)
+	@OneToMany(fetch = FetchType.EAGER,orphanRemoval=true,mappedBy="quantity")
 	@JsonIgnore
 	List<BookDetail> bookdetail;
 	

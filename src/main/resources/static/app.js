@@ -48,7 +48,10 @@ app.config(['$routeProvider','$httpProvider',
 		controller: 'viewbookctrl'
 	})
 	
-	
+	.when('/returnbook', {
+		templateUrl: 'return.html',
+		controller: 'returnbookctrl'
+	})
 	
 	.when('/viewcopy/:bookid', {
 		templateUrl: 'viewcopy.html',
@@ -207,11 +210,7 @@ $scope.state={};
 	}
 	
 	$rootScope.bookdetail={};
-	$rootScope.bookdetail.quantity=[];
-	$rootScope.bookdetail.members=[];
 	$scope.issueBook=function(){
-		$rootScope.bookdetail.quantity.push($scope.ab);
-		$rootScope.bookdetail.members.push($scope.cd);
 		$http({
 			method : 'POST',
 			url : '/abc',
@@ -284,5 +283,57 @@ app.controller('viewcopyctrl', [ '$scope','$rootScope','$http',  '$routeParams',
               alert("deleted failed");
           });
 	}
+	$scope.addcopy=function(bookid)
+{
+	$http({
+		method : 'POST',
+		url :'/addcopy1/'+bookid,
+	}).then(function(response) {
+		$rootScope.x = response.data;
+	
+	});
+	
+}
 
+} ])
+
+app.controller('returnbookctrl', [ '$scope','$rootScope','$http', function($scope, $rootScope, $http) {
+
+$scope.title="Pankaj";
+$scope.account={};
+	$http({
+		method : 'GET',
+		url : '/books',
+		/*headers : {
+				'Authorization' : 'Basic ' + encodedAuthData
+			}*/
+	}).then(function(response) {
+		$rootScope.books= response.data;
+	});
+	$scope.fetch=function()
+	{
+		
+		$http({
+			method : 'GET',
+			url : '/searchbytitle/'+$scope.account.title,
+			/*headers : {
+					'Authorization' : 'Basic ' + encodedAuthData
+				}*/
+		}).then(function(response) {
+			$rootScope.books= response.data;
+		});
+		
+		$scope.mark=function(accountid){
+			$http({
+				method : 'POST',
+				url :'/markabook/'+accountid,
+			}).then(function(response) {
+				$rootScope.x = response.data;
+			
+			});
+				
+		}
+	}
+	
+	
 } ])

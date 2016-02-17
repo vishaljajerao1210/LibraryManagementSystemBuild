@@ -14,10 +14,14 @@
 				
 				
 				
-		<b>TITLE</b><select class="form-control" ng-model="state.title">
-				<option  ng-repeat="book in books"  value="{{book.title}}">{{book.title}}
+		<b>TITLE</b> <select class="form-control" ng-model="state.title">
+				<option  ng-repeat="book in books| filter : filterEntity"  value="{{book.title}}">{{book.title}}
 				</option>
+				<input type="search" placeholder="Search" ng-model="filterEntity"></input>
 				</select>
+							
+			
+				
 			 <button ng-click="fetchbytitle()">Fetch</button>
 				 
 				
@@ -26,7 +30,7 @@
 				
 				
 		
-		<b>Copies</b><select class="form-control" ng-model="ab.accountId">
+		<b>Copies</b><select class="form-control" ng-model="bookdetail.quantity.accountId">
 				<option  ng-repeat="book in books.quantity"  value="{{book.accountId}}">{{book.accountId}}
 				</option></select>
 		
@@ -37,8 +41,8 @@
 				
 				
 				<b>Member Id</b>
-				<input type="text" ng-model="cd.memberId">
-				<!-- <select class="form-control" ng-model="bookdetails.members.memberId">
+				<input type="text" ng-model="bookdetail.members.memid">
+				<!-- <select class="form-control" ng-model="bookdetails.members.memid">
 <option  ng-repeat="member in member"  value="{{mem.memId}}">
 </option>
 

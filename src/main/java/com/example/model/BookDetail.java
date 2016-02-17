@@ -25,10 +25,11 @@ public class BookDetail {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	int id;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	Member members;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	//many to one creates column quantity id in bookdetails
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="quantity_id",referencedColumnName="accountId")
 	Quantity quantity;
 	

@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.example.Gender;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="member")
@@ -31,8 +32,10 @@ public class Member {
 	@Column
 	String lastName;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-	List<Quantity> quantity;
+	
+    @OneToMany(mappedBy="members")
+    @JsonIgnore
+    List<BookDetail> bookdetail;
 	
 	@Column
 	String email;
@@ -45,6 +48,14 @@ public class Member {
 	
 	@Enumerated(EnumType.STRING)
     private Gender gender;
+
+	public List<BookDetail> getBookdetail() {
+		return bookdetail;
+	}
+
+	public void setBookdetail(List<BookDetail> bookdetail) {
+		this.bookdetail = bookdetail;
+	}
 
 	public int getMemid() {
 		return memid;
@@ -70,13 +81,7 @@ public class Member {
 		this.lastName = lastName;
 	}
 
-	public List<Quantity> getQuantity() {
-		return quantity;
-	}
 
-	public void setQuantity(List<Quantity> quantity) {
-		this.quantity = quantity;
-	}
 
 	public String getEmail() {
 		return email;
