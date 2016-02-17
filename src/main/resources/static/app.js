@@ -300,40 +300,43 @@ app.controller('viewcopyctrl', [ '$scope','$rootScope','$http',  '$routeParams',
 app.controller('returnbookctrl', [ '$scope','$rootScope','$http', function($scope, $rootScope, $http) {
 
 $scope.title="Pankaj";
-$scope.account={};
 	$http({
 		method : 'GET',
-		url : '/books',
+		url : '/bookdetails',
 		/*headers : {
 				'Authorization' : 'Basic ' + encodedAuthData
 			}*/
 	}).then(function(response) {
-		$rootScope.books= response.data;
+		$rootScope.bookdetails= response.data;
 	});
-	$scope.fetch=function()
+	/*$scope.fetch=function()
 	{
 		
 		$http({
 			method : 'GET',
 			url : '/searchbytitle/'+$scope.account.title,
-			/*headers : {
+			headers : {
 					'Authorization' : 'Basic ' + encodedAuthData
-				}*/
+				}
 		}).then(function(response) {
 			$rootScope.books= response.data;
 		});
-		
+*/		
 		$scope.mark=function(accountid){
 			$http({
 				method : 'POST',
 				url :'/markabook/'+accountid,
 			}).then(function(response) {
-				$rootScope.x = response.data;
-			
+				if(response.data.status){
+					alert('issued Successfully!');
+				}
+				else {
+					alert('issuing Failed!');
+				}
 			});
 				
 		}
-	}
+	
 	
 	
 } ])

@@ -1,0 +1,23 @@
+
+<body ng-controller="returnbookctrl">
+	
+				FilterByMemberid:<input type="text" ng-model="search.members.memid"/>
+							<table class="table table-bordered">
+							<thead>
+							<tr>
+							<th>bookdetailid</th>
+							<th>accountid</th>
+							<th>memberid</th>
+							<th>status</th>
+							<th>mark</th>
+							</tr>
+							<tbody ng-repeat="book in bookdetails| filter : search">
+							<tr ng-show="book.quantity.status=='Unavailable'">
+							<td>{{book.id}}</td>
+							<td>{{book.quantity.accountId}}</td>
+							<td>{{book.members.memid}}</td>
+							<td>{{book.quantity.status}}</td>
+							
+	
+							<td><button ng-click="mark(book.id)" class="btn btn-primary" >Mark a book</button></td></tr></tbody></table>
+</body>

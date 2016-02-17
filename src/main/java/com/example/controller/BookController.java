@@ -293,7 +293,7 @@ public HashMap<String,Object> issubook(@RequestBody BookDetail bookdetail ) {
 		returnParams.put("status", true);
 	} catch (Exception e) {
 		returnParams.put("status", false);
-		returnParams.put("msg", "Failed o issue!!!!!!");
+		returnParams.put("msg", "Failed to issue!!!!!!");
 		e.printStackTrace();
 	}
 
@@ -308,7 +308,6 @@ public List<Member>getMembers()
 	return (List<Member>)memberrespository.findAll();
 }
 
-}
 
 
 
@@ -326,9 +325,46 @@ public List<Member>getMembers()
 
 
 
-@RequestMapping("/markabook/{accountid}")
-public HashMap<String,Object>markbook(@PathVariable("accountid") String accountid) {
+
+@RequestMapping("/markabook/{bookid}")
+public HashMap<String,Object>markbook(@PathVariable("bookid") int bookid) {
 	HashMap<String, Object> returnParams = new HashMap<String, Object>();
+	try{
+		int fine;
+	BookDetail bookdetail=bookdetailrepository.findOne(bookid);
+
+	Date today = new Date();
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+    today = sdf.parse(sdf.format(today));
+    
+    bookdetail.setReturnDate(today);
+    String acc=bookdetail.getQuantity().getAccountId();
+    Quantity qu=quantityrepository.findOne(acc);
+    
+    
+    Long days=(bookdetail.getReturnDate().getTime()) - (bookdetail.getDueDate().getTime());
+    days=days / 1000 / 60 / 60 / 24;
+    
+    if(days<=0)
+    	fine=0;
+    else{
+    int amount1=finerepository.findOne(1).getAmount();
+    int amount2=finerepository.findOne(2).getAmount();
+    int days1=finerepository.findOne(1).getNumberOfDays();
+    int days2=finerepository.findOne(2).getNumberOfDays();
+    if(days<=days1)
+       fine=(int)(amount1*days);
+    else
+    	fine=(int)((amount1*days1)+(amount2*(days-days1)));
+     	
+    }
+    
+    bookdetail.setFine(fine);  
+    
+    qu.setStatus(Status.Available);
+    quantityrepository.save(qu);
+    bookdetailrepository.save(bookdetail);
 	
 	
 		returnParams.put("status", true);
@@ -340,6 +376,7 @@ public HashMap<String,Object>markbook(@PathVariable("accountid") String accounti
 	return returnParams;
 	
 }	
+}
 
 
 
