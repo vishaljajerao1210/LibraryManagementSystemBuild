@@ -1,26 +1,43 @@
-<form>
-                                <input type="text" placeholder="Search by member id" required>
-                                <input type="button" value="Search" href=#memhistory>
-                                
+<body ng-controller="chistoryctrl">
+<div class="container">
+<div  class="col-md-offset-4">
+<br>
+<br>
+<form class="col-md-11"> 
+
+<div id="custom-search-input">
+<div class="input-group col-md-12">
+<input type="text" class="form-control input-lg" placeholder="Enter title..." />
+<span class="input-group-btn">
+<button class="btn btn-info btn-lg" ng-click=" "  type="button">
+<i class="glyphicon glyphicon-search"></i>
+</button>
+</span>
+</div>
+</div>
 </form>
 <div class="panel panel-primary">
 <div class="panel-heading">
- <table>
- <thead>
- <th>
- #</th>
- <th>
- MEMBER</th>
- </thead>
- </table>
+<table class="table table-condensed">
+    <thead>
+        <th>Id</th>
+        <th>Member</th>
+        <th>View</th>
+	</thead>
+</table>
+</div>
  <div class="panel-body">
- <table>
- <tbody ng-repeat="member in history">
- <tr>
- <td>{{member.memid}}</td>
-  <td>{{member.firstName}}</td>
-  <td><a href=#view/{{bookdetail.id}}>view</a></td>
-  </tr>
- </tbody>
- </table></div>
- </div></div>
+   <table class="table table-condensed">
+       <tbody ng-repeat="me in history">
+         <tr>
+           <td>{{me.memid}}</td>
+           <td>{{me.firstName}}</td>
+           <td><a href=#viewhistory/{{id}}>view</a></td>
+         </tr>
+       </tbody>
+  </table>
+  </div>
+ </div>
+</div>
+</div>
+</body>

@@ -1,35 +1,86 @@
 
 
-<body ng-controller="viewbooks">
-<form>
-                                <input type="text" placeholder="Search..." required>
-                                <input type="button" value="Search" href=#view>
-                                
-</form>
-<div class="panel panel-primary">
-<div class="panel-heading">
-<table class="table table-condensed">
-    <thead>
-        <th>title</th>
-        <th>author</th>
-        <th>isbn</th>
-	</thead>
-</table>
+
+
+		
+	<body id="top" ng-controller="viewbooks">
+
+		<!-- start preloader -->
+		<div class="preloader">
+			<div class="sk-spinner sk-spinner-wave">
+     	 		<div class="sk-rect1"></div>
+       			<div class="sk-rect2"></div>
+       			<div class="sk-rect3"></div>
+      	 		<div class="sk-rect4"></div>
+      			<div class="sk-rect5"></div>
+     		</div>
+    	</div>
+    	
+    	
+
+    	
+    	<!-- start team -->
+    	<section id="team">
+    		<div class="container">
+    			<div class="row">
+    				<div class="col-md-10" >
+    					<h2   style="color:hotpink" ="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">List Of Books</h2>
+    			<form class="col-md-11"> 
+
+<div id="custom-search-input">
+<div class="input-group col-md-12">
+<input type="text" class="form-control input-lg" placeholder="Enter title..." />
+<span class="input-group-btn">
+<button class="btn btn-info btn-lg" ng-click="" type="button">
+<i class="glyphicon glyphicon-search"></i>
+</button>
+</span>
 </div>
- <div class="panel-body " >
-<table class="table table-condensed">
-<tbody ng-repeat="x in books">
-<tr>
-<td>{{x.title}}</td>
-<td>{{x.author}}</td>
-<td>{{x.isbn}}</td>
-<td><a href=#view/{{x.bookid}}>view</a></td>
-<td><a href=#viewcopy/{{x.bookid}}>view</a></td>
-<td><a  href=#edit/{{x.bookid}}>edit</a></td>
-<td><a  href=#delete/{{x.bookid}}>delete</a></td>
-</tr>
-</tbody>
-</table>
 </div>
-</div> 
-</body>
+
+
+
+<!-- <span class="col-md-offset-10 right-inner-addon" >
+<a href="" ng-click="fetchbytitle();sho='true'" class="glyphicon glyphicon-search" type="submit"  style="color:blue"></a>
+</span> -->
+
+</form>		
+<br>
+<br>
+    				<br>
+    				<div   class="col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-repeat="x in books" >
+    					<div class="hovereffect">
+    						<img src="images/portfolio-img2.jpg" class="img-responsive" alt="team img 1">
+    							<div class="overlay">
+    								 <h4 style="color:cyan">{{x.title}}</h4>
+    								 <h4 style="color:White">By<br> <h4 style="color:hotpink">{{x.author}}</h4></h4>
+    							<h4><br>	<a style="color:White" href=#view/{{x.bookid}}>View</a>  								
+    								 <a  style="color:White"href=#edit/{{x.bookid}}>Edit</a>
+    								 <a  style="color:White"href=#delete/{{x.bookid}}>Delete</a></h4>
+    						
+    							</div>
+    					</div>
+    				</div>
+    				
+    				</div>    			
+    		</div>
+    	</section>
+    	<!-- end team -->
+
+    	
+    	
+        <!-- start copyright -->
+        <footer id="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p class="wow bounceIn" data-wow-offset="50" data-wow-delay="0.3s">
+                       	Copyright &copy; 2016 Company Name</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end copyright -->
+
+	</body>
+</html>

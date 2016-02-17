@@ -29,7 +29,10 @@ app.config(['$routeProvider','$httpProvider',
 		templateUrl: 'fine.html',
 		controller: 'viewfinectrl'
 	})
-	
+	.when('/viewhistory/:id',{
+		templateUrl:'viewhistory',
+		controller:'viewhistoryctrl'
+	})
 	
 	.when('/issuebook', {
 		templateUrl: 'issuebook.html',
@@ -44,15 +47,20 @@ app.config(['$routeProvider','$httpProvider',
 		controller: 'chistoryctrl'
 	})
 	.when('/viewbook/:categoryId', {
-		templateUrl: 'viewbook.html',
+		templateUrl: 'viewbookbycategory.html',
 		controller: 'viewbookctrl'
 	})
-	
-	
-	
+	.when('/editcategory/:categoryId', {
+		templateUrl: 'editcategory.html',
+		controller: 'editcategoryctrl'
+	})
 	.when('/viewcopy/:bookid', {
 		templateUrl: 'viewcopy.html',
 		controller: 'viewcopyctrl'
+	})
+	.when('/mybooks', {
+		templateUrl: 'Mybook.html',
+		controller: 'viewmybooksctrl'
 	})
 
 	// .otherwise({
@@ -77,6 +85,32 @@ app.controller('viewbooks', [ '$scope','$rootScope','$http',  '$routeParams', fu
 
 } ])
 
+
+app.controller('viewmybooksctrl', [ '$scope','$rootScope','$http',  '$routeParams', function($scope, $rootScope, $http, $routeParams) {
+
+	$scope.title = 'List of Courses';
+
+	$http({
+		method : 'GET',
+		url : '/viewmybooks',
+		/*headers : {
+				'Authorization' : 'Basic ' + encodedAuthData
+			}*/
+	}).then(function(response) {
+		$rootScope.mybooks= response.data;
+	});
+	
+	/*$http({
+		method : 'GET',
+		url : '/bookdetails',
+		headers : {
+				'Authorization' : 'Basic ' + encodedAuthData
+			}
+	}).then(function(response) {
+		$rootScope.mybookdetails= response.data;
+	});
+*/
+} ])
 
 
 
@@ -110,6 +144,46 @@ app.controller('addbookctrl', [ '$scope','$rootScope', '$http', function($scope,
 	}
 
 }])
+
+app.controller('editcategoryctrl', [ '$scope','$rootScope','$http',  '$routeParams', function($scope, $rootScope, $http, $routeParams) {
+
+	
+	$http({
+		method : 'GET',
+		url :'/categories',
+	}).then(function(response) {
+		$rootScope.categories = angular.copy(response.data);
+	});
+
+$scope.editCategory=function(){
+	$http({
+		method : 'POST',
+		url : '/editCategory/',
+		data : $rootScope.categories
+	}).then(function(response) {
+		if(response.data.status){
+			alert('Category edited Successfully!');
+		}
+		else {
+			alert('Category editing Failed!');
+		}
+	});
+}
+
+} ])
+app.controller('viewhistoryctrl', [ '$scope','$rootScope','$http',  '$routeParams', function($scope, $rootScope, $http, $routeParams) {
+
+	
+	/*$http({
+		method : 'GET',
+		url :'/member',
+	}).then(function(response) {
+		$rootScope.track = response.data;
+	});*/
+
+
+
+} ])
 
 
 
@@ -194,10 +268,10 @@ $scope.state={};
 	$scope.fetchbytitle=function()
 	{
 		
-	var status=$scope.state.title;
+	//var status=$scope.state.title;
 		$http({
 			method : 'GET',
-			url : '/searchbytitle/'+status,
+			url : '/searchbytitle/'+$scope.state.title,
 			/*headers : {
 					'Authorization' : 'Basic ' + encodedAuthData
 				}*/
@@ -207,26 +281,30 @@ $scope.state={};
 	}
 	
 	$rootScope.bookdetail={};
-	$scope.addcategory=function(){
-		/*$http({
+	$scope.issueBook=function(){
+		$http({
 			method : 'POST',
-			url : '/issuebook',
+			url : '/abc',
 			data:$rootScope.bookdetail
 
 
 		}).then(function(response) {
-			$rootScope.issue = response.data;
-		});*/
+			if(response.data.status){
+				alert('issued Successfully!');
+			}
+			else {
+				alert('issuing Failed!');
+			}
+		});
 	}
 } ]);
 
+
 app.controller('chistoryctrl', [ '$scope','$rootScope','$http', function($scope, $rootScope, $http) {
-
-
 
 	$http({
 		method : 'GET',
-		url : '/member',
+		url : '/members',
 
 	}).then(function(response) {
 		$rootScope.history = response.data;

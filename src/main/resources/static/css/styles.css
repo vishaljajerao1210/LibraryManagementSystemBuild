@@ -6,7 +6,7 @@
   margin: 0;
   padding: 0;
   border: 0;
-   list-style:square;
+   list-style:arrow;
   line-height: 1;
   display: block;
   position: relative;
@@ -65,7 +65,7 @@
   display: block;
   width: 10px;
   height: 2px;
-  background: black;
+  background:black;
   content: "";
   -webkit-transition: all 0.1s ease-out;
   -moz-transition: all 0.1s ease-out;
@@ -88,7 +88,7 @@
   font-size: 14px;
   text-decoration: none;
   color: white;
-  background: black;
+  background: magenta;
   -webkit-transition: color .2s ease;
   -o-transition: color .2s ease;
   transition: color .2s ease;

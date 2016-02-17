@@ -1,52 +1,93 @@
 
 <body ng-controller="issuebookctrl">
+	<div class="container">
+<div  class="col-md-offset-4">
+<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" >
+           
+<body ng-controller="issuebookctrl">
 <div class="row">
-<div class="container ">
+<div class="container">
+<div class="col-md-10">
 <div class="col-md-8">
- <div class="col-md-offset-4 ">
- <form>
-         <input type="text" placeholder="Search...">
-                                <input type="button" value="Search" href=#view>
-                                </form>
+
+  <h2 style="color:hotpink">Issue Book</h2>
+ <form class="col-md-11"> 
+
+<div id="custom-search-input">
+<div class="input-group col-md-12">
+<input type="text" class="form-control input-lg" placeholder="Enter title..." />
+<span class="input-group-btn">
+<button class="btn btn-info btn-lg" ng-click="fetchbytitle();sho='true'"  type="button">
+<i class="glyphicon glyphicon-search"></i>
+</button>
+</span>
+</div>
+</div>
+
+
+
+<!-- <span class="col-md-offset-10 right-inner-addon" >
+<a href="" ng-click="fetchbytitle();sho='true'" class="glyphicon glyphicon-search" type="submit"  style="color:blue"></a>
+</span> -->
+
+</form>
+<br>
+
+
+        
 				  <form>
-<!-- 	                    	<b>BookId</b><input type="text" id="bid" class="form-control"
-				ng-model="books.id"/> -->	
-				
-				
-				
-				
-		<b>TITLE</b><select class="form-control" ng-model="state.title">
-				<option  ng-repeat="book in books"  value="{{book.title}}">{{book.title}}
+				 <br>
+				 <br>
+				 <br>
+		<b align="left">TITLE</b> <select class="form-control" ng-model="state.title">
+				<option  ng-repeat="book in books| filter : filterEntity"  value="{{book.title}}">{{book.title}}
 				</option>
-				</select>
-			 <button ng-click="fetchbytitle()">Fetch</button>
-				 
+<!-- 				<input type="search" placeholder="Search" ng-model="filterEntity"></input>
+ -->				</select>
+							
+			
 				
+<!-- 			 <button class="btn btn-primary" ng-click="fetchbytitle()">Fetch</button>
+ -->				 
+				<br>
 				<b>ISBN</b><input type="text" id="isbn" class="form-control"
 				ng-model="books.isbn"/>
 				
-				
+				<br>
 		
-		<b>Copies</b><select class="form-control">
+		<!-- <b>Copies</b><select class="form-control" ng-model="bookdetail.quantity.accountId">
 				<option  ng-repeat="book in books.quantity"  value="{{book.accountId}}">{{book.accountId}}
-				</option></select>
-		
+				</option></select> -->
+				<div class="container">
+  
+<table ng-show=sho class="table table-striped" style="width:40%">
+							<thead>
+							<tr>
+							<th>Accountid</th>
+							<th>Status</th>
+							<th>Select</th>
+							</tr>
+							<tbody ng-repeat="y in books.quantity">
+							<tr>
+							<td>{{y.accountId}}</td>
+							<td>{{y.status}}</td>
+	
+							<td><button ng-click="sh='true'">select</button></td></tr></tbody></table>
+
+	</div>	
+		<br>
 				
 			<b>AUTHOR</b>	<input type="text" id="author" class="form-control"
 				ng-model="books.author"/>
 							<br>
 				
-				
-				<b>Member Id</b><select>
-<option  ng-repeat="member in member"  value="{{mem.memId}}">
-</option>
+				<b>MEMBER ID</b>
+				<input type="text" class="form-control" ng-model="bookdetail.members.memid">
+			
 
-</select>	<br>
-<br>
-<br>
-
-	<input type="submit" class="btn btn-primary" value="Issue"/>
-		</form>
+	<input type="submit" class="btn btn-sm btn-info" ng-click="issueBook()" value="Issue"/>
+		</form> 
+		</div>
 		</div>
 		</div>
 		</div>
@@ -58,3 +99,8 @@
 
 
 </body>
+				
+		
+	
+            
+

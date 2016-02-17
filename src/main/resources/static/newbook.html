@@ -5,31 +5,28 @@
 		<div class="container ">
 			<div class="col-md-8">
 				<div class="col-md-offset-4 ">
-
-					<input type="text" placeholder="Search" required> 
-					<input type="button" value="Search" href=#memhistory> <br> <br>
+<h2 style="color:hotpink">Add Book</h2>
 					<form>
-						<label>ISBN</label><input type="text" id="isbn"
+						<label> ISBN</label><input type="text" id="isbn"
 							class="form-control" ng-model="books.isbn" /> <label>TITLE</label><input
 							type="text" id="title" class="form-control"
 							ng-model="books.title" /> <label>AUTHOR</label> <input
 							type="text" id="author" class="form-control"
-							ng-model="books.author" /> <br> <label>Copies</label><input
+							ng-model="books.author" />  <label>COPIES</label><input
 							type="number" id="copies" class="form-control"
-							ng-model="books.copies" /> <br> <label>Categories</label>
+							ng-model="books.copies" /> <br> <label>CATEGORIES</label>
 						<div ng-repeat="y in categories">
 							<input type="checkbox">{{y.categoryname}}</input>
 
 						</div>
 						<br> <br>
 
-						<button type="button" class="btn btn-info btn-lg"
+						<button type="button" class="btn btn-mid btn-info"
 							data-toggle="modal" data-target="#myModal">
-							<a href="">New Category</a>
+							New Category
 						</button>
-
-						<button class="btn btn-primary" type="submit" ng-click="savebook()">Add a book</button>
-
+						<span><button class="btn btn-mid btn-info" type="submit" ng-click="savebook()">Add a book</button>
+</span>
 					</form>
 				</div>
 			</div>
@@ -48,7 +45,7 @@
 					Category Name<input type="text" id="categoryname"
 								class="form-control" ng-model="categories.categoryname" /> <br>
 							<br>
-						<button class="btn btn-primary" type="submit"
+						<button class="btn btn-info" type="submit"
 								ng-click="addcategoryy()" data-dismiss="modal">Add</button>
 					</form>
 				</div>

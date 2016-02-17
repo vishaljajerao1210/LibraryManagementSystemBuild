@@ -1,32 +1,65 @@
- <head>
-<style>
-t{
-background:#bfdedf;
-height:100px
-}
-</style></head> 
+
 <body ng-controller="viewcategories">
-<div class="panel panel-primary">
-<div class="panel-heading">
-<table>
-<thead>
 
-<th>Categories</th>
+    		<div class="container">
+    			<div class="row">
+    				<div class="col-md-10" >
+    				&nbsp;&nbsp;	<h2 class="wow bounceIn"  style="color:hotpink" data-wow-offset="50" data-wow-delay="0.3s"> List Of Categories</h2>
+    				
+    				<br>
+    				<div   class="col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-repeat="x in categories" >
+    					<div class="hovereffect">
+    						<img src="images/home-bg.jpg" class="img-responsive" alt="team img 1">
+    						<br>
+    						 <h4 style="color:cyan">{{x.categoryname}}</h4>
+    							<div class="overlay">
+    				<br>
+    				<br>
+    							<h4><br>	<a style="color:White" href=#viewbook/{{x.catid}}>View</a> &nbsp;&nbsp; 								
+    								<a  style="color:White" href="#editcategory/{{x.catid}}"  data-toggle="modal"
+			data-target="#editModal">Edit</a>
+    								
+    				
+    								 &nbsp;&nbsp;
+   								 <a  style="color:White"href=#delete/{{x.catid}}>Delete</a></h4>
+    						
+    							</div>
+    					</div>
+    				</div>
+    				
+    				</div>    			
+    		</div>
+  </div>
+  <div ng-controller="editcategoryctrl">
+	<div class="container">
+		<!-- Trigger the modal with a button -->
+		<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+			data-target="#editModal">Edit</button>
+		 --><!-- Modal -->
+		<div class="modal fade" id="editModal" role="dialog">
+			<div class="modal-dialog">
 
-</thead>
-</table>
-</div>
-<div class="panel-body ">
-<table class="table table-condensed  ">
-<tbody ng-repeat="x in categories">
-<tr>
-<td>{{x.categoryname}}</td>
-<td><a href=#viewbook/{{$index}}>View Books</a></td>
-<td>Edit</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">edit Category</h4>
+					</div>
+					<div class="modal-body">
+						<form>
+							Category Name<input type="text" id="categoryname"
+								class="form-control" ng-model="categories.categoryname" /> <br>
+							<br>
+							<button class="btn btn-primary" type="submit"
+								ng-click="editCategory()" data-dismiss="modal">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 
+	</div>
+
+</div>
+  
 </body>

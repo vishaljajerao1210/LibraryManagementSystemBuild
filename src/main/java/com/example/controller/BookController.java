@@ -52,6 +52,10 @@ public class BookController {
 	public List<Book> getBooks() {
 		return (List<Book>) bookrepository.findAll();
 	}	
+	@RequestMapping("/bookdetails")
+	public List<BookDetail> getBookdetails() {
+		return (List<BookDetail>) bookdetailrepository.findAll();
+	}	
 	
 	@RequestMapping("/book/{bookid}")
 	public Book get(@PathVariable("bookid") int bookid)
@@ -59,18 +63,45 @@ public class BookController {
 		return bookrepository.findOne(bookid);
 		
 	}
+	@RequestMapping("/editCategory/{categoryid}")
+	public HashMap<String,Object> editcategory(@RequestBody Category category) {
+		HashMap<String, Object> returnParams = new HashMap<String, Object>();
+		
+		try {
+			categoryrepository.save(category);
+			returnParams.put("status", true);
+		} catch (Exception e) {
+			returnParams.put("status", false);
+			returnParams.put("msg", "Failed to add Category!!");
+		}
+
+		return returnParams;
+	}
+
 	@RequestMapping("/deletecopy/{accountid}")
 	public void delete(@PathVariable("bookid")String accountid)
 	{
-		quantityrepository.delete(accountid);
+	//	quantityrepository.delete(accountid);
 	}
 	
-	
+	@RequestMapping("/viewmybooks")
+	public List<Book> getmybooks() {
+		return (List<Book>) bookrepository.findAll();
+	}
 	
 	@RequestMapping("/viewfine")
 	public List<Fine> getfine() {
 		return (List<Fine>) finerepository.findAll();
 	}	
+	@RequestMapping("/quantities")
+	public List<Quantity> getEachBook() {
+		return (List<Quantity>) quantityrepository.findAll();
+	}
+	
+	@RequestMapping("/members")
+	public List<Member> getallmybooks() {
+		return (List<Member>) memberrespository.findAll();
+	}
 	
 	@RequestMapping("/books/{isbn}")
 	public List<Book> getBooks(@PathVariable("isbn") int isbn) {
@@ -82,7 +113,7 @@ public class BookController {
 		return (List<BookDetail>) bookdetailrepository.findOne(id);
 	}	
 	
-	@RequestMapping("/member")
+	@RequestMapping("/member/{id}")
 	public List<BookDetail> getBookDetails(@PathVariable("id") int id)
 	{
 		return (List<BookDetail>) bookdetailrepository.findOne(id);
@@ -105,31 +136,11 @@ public class BookController {
 		return returnParams;
 	}
 	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	@RequestMapping("/addBook")
 	public HashMap<String,Object> addbook(@RequestBody Book book) {
 		HashMap<String, Object> returnParams = new HashMap<String, Object>();
 		
 		try {
-			
-			
-			
-		
-			
-			
 			int j=book.getCopies();
 			List<Quantity>account=new ArrayList<Quantity>();
 			int i=1;
@@ -137,9 +148,6 @@ public class BookController {
 			{
 				
 				Quantity a=new Quantity();
-					
-					
-				
 					UUID uuid=UUID.randomUUID();
 					String randomNo = uuid.toString();
 					randomNo=randomNo.replace("-", "");
@@ -162,17 +170,6 @@ public class BookController {
 
 		return returnParams;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	@RequestMapping("/savemember")
 	public HashMap<String,Object> addmember(@RequestBody Member mem) {
