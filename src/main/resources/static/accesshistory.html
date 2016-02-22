@@ -1,0 +1,42 @@
+<body ng-controller="accesshistoryctrl">
+
+<div class="container">
+
+<form class="col-md-7" style="padding-top:20px;margin-left: 200px;">
+									<div id="custom-search-input">
+										<div class="input-group col-md-12">
+											<input type="text" class="form-control input-lg"
+												placeholder="Search for a Member..." /> <span
+												class="input-group-btn">
+												<button class="btn btn-info btn-lg"
+													ng-click="fetchbytitle();sho='true'" type="button">
+													<i class="glyphicon glyphicon-search"></i>
+												</button>
+											</span>
+										</div>
+									</div>
+								</form>
+		<div class="row">
+		
+		
+			<div class="col-md-10">
+				&nbsp;&nbsp;
+				<h1  style="color:hotpink" ><b>List Of Members<b></h1><br>
+				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-repeat="x in history">
+				<div class="overlay panel " style="background-color: rgba(0, 0, 0, 0.47);border-radius:80%;-webkit-border-radius: 99px 0px 99px 0px;-moz-border-radius: 99px 0px 99px 0px">
+				<h2 style="color: cyan" >{{x.firstName}}&nbsp;{{x.lastName}}</h2>
+				<h4 style="color: hotpink" >{{x.email}}</h4>
+				<h4>
+								<br>
+								 <a style="color: White" href=#viewhistory/{{x.memid}}>View</a>
+								&nbsp;&nbsp; 
+								
+							</h4>
+				
+				</div>
+			
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
