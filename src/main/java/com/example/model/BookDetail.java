@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -24,16 +25,13 @@ public class BookDetail {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	int id;
 	
-	@ManyToMany(fetch=FetchType.EAGER)
-    @JoinTable(
-	            name = "bookdetail_member",
-	            joinColumns={@JoinColumn(name = "id")},
-	            inverseJoinColumns ={@JoinColumn(name="memid")}
-	    )
-	List<Member> members;
+	@ManyToOne(fetch = FetchType.EAGER)
+	Member members;
 	
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-	List<Quantity> quantity;
+	//many to one creates column quantity id in bookdetails
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="quantity_id",referencedColumnName="accountId")
+	Quantity quantity;
 	
 	@Column
 	Date issueDate;
@@ -55,19 +53,22 @@ public class BookDetail {
 		this.id = id;
 	}
 
-	public List<Member> getMembers() {
+	
+
+
+	public Member getMembers() {
 		return members;
 	}
 
-	public void setMembers(List<Member> members) {
+	public void setMembers(Member members) {
 		this.members = members;
 	}
 
-	public List<Quantity> getQuantity() {
+	public Quantity getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(List<Quantity> quantity) {
+	public void setQuantity(Quantity quantity) {
 		this.quantity = quantity;
 	}
 

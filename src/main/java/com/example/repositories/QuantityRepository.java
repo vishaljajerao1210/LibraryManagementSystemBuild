@@ -6,4 +6,6 @@ import com.example.model.Quantity;
 
 public interface QuantityRepository extends JpaRepository<Quantity, String>{
 
+	public Quantity findByAccountId(String accountid);
+
 }

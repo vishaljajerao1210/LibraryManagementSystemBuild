@@ -13,6 +13,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -36,15 +37,15 @@ public class Book {
 	List<Category> cats;
 	
 	
-	@Column
+	@Column(unique=true)
 	String isbn;
 	
 	
 		@Column
 		String author;
 		
-		
-		@Column
+	
+		@Column(unique=true)
 		String title;
 		
 		@Column
