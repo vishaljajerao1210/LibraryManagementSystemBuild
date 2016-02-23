@@ -1,21 +1,18 @@
 <!DOCTYPE html>
-<!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
-<!--[if IE 7 ]>    <html class="ie ie7 no-js" lang="en"> <![endif]-->
-<!--[if IE 8 ]>    <html class="ie ie8 no-js" lang="en"> <![endif]-->
-<!--[if IE 9 ]>    <html class="ie ie9 no-js" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+
+   <html  lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
         <title>Library Management System</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         
-        <meta name="author" content="Codrops" />
+       <meta name="author" content="Codrops" />
         <link rel="shortcut icon" href="../favicon.ico"> 
   <link rel="stylesheet" type="text/css" href="css/demo.css" /> 
-        <link rel="stylesheet" type="text/css" href="css/style2.css" />
-		<script type="text/javascript" src="js/modernizr.custom.86080.js"></script>
-		
+      
+		<script type="text/javascript" src="js/modernizr.custom.86080.js"></script> 
+		  <link rel="stylesheet" type="text/css" href="css/style2.css" />
 		<link rel="stylesheet" type="text/css"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -32,26 +29,30 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
  <link rel="stylesheet" href="css/panel.css">
+ <link rel="stylesheet" href="css/loginform.css">
  <link rel="stylesheet" href="css/slideshow.css">
 <link rel="stylesheet" href="css/sidemenu.css">
 <script src="js/jquery.js"></script>
 <link rel="stylesheet" href="css/bookhover.css">
 <script src="js/wow.min.js"></script>
+<style type="text/css">
 
+
+</style>
 <script
 	src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-route.min.js"></script>
 
 <script src="app.js"></script>
     </head>
-    <body id="page" ng-app="app" >
-        <ul class="cb-slideshow">
+    <body id="page" ng-app="app" style="background-color: rgba(0, 0, 0, 0.55);">
+     <!--   <ul class="cb-slideshow">
             <li><span>Image 01</span><div><b style="color:cyan;font-size:30px">dreams.last.for.a.night.time.but.<b style="color:hotpink">books</b>.take.forever&nbsp;&nbsp;</b></div></li>
             <li><span>Image 02</span><div><h3></h3></div></li>
             <li><span>Image 03</span><div><h3></h3></div></li>
-            <li><span>Image 04</span><div><h3></h3></div></li>
+          <li><span>Image 04</span><div><h3></h3></div></li>
            <li><span>Image 05</span><div><h3></h3></div></li>
-            <li><span>Image 06</span><div><h3></h3></div></li> 
-        </ul>
+            <li><span>Image 06</span><div><h3></h3></div></li>  
+        </ul> --> 
 		<nav class="navbar navbar-inverse" style="padding-bottom: 0px;">
    <a class="navbar-brand active" href="#home" style="
     padding-bottom: 20px;
@@ -75,29 +76,27 @@
   </ul>
   <ul class="nav navbar-nav pull-right">
   <li class="nav-item active">
-      <a class="nav-link" href="#viewprofile" style="padding-top: 30px;"> <i style="color:cyan" class="fa fa-user fa-lg"></i>&nbsp;User Name</a>
+      <a class="nav-link" href="#viewprofile"  ng-show="showmain" style="padding-top: 30px;"> <i style="color:cyan" class="fa fa-user fa-lg"></i>&nbsp;User Name</a>
     </li>
 	   <li class="nav-item active">
-      <a class="nav-link" href="#editprofile" style="padding-top: 30px;"> <i style="color:cyan" class="fa fa-pencil fa-lg"></i>&nbsp; Edit Profile</a>
+      <a class="nav-link" href="#editprofile"  ng-show="showmain"  style="padding-top: 30px;"> <i style="color:cyan" class="fa fa-pencil fa-lg"></i>&nbsp; Edit Profile</a>
     </li>
   <li class="nav-item active">
-      <a class="nav-link" href="#logout" style="padding-top: 30px;"> <i style="color:cyan" class="fa fa-power-off"></i>&nbsp; LogOut</a>
+      <a class="nav-link" href="#logout"   ng-show="showmain" style="padding-top: 30px;"> <i style="color:cyan" class="fa fa-power-off"></i>&nbsp; LogOut</a>
     </li>
   </ul>
 </nav>
 </div>
-		<!-- second Top nav bar -->
+		<!--Top nav bar -->
 		<!-- Side-Nav bar -->
 		
-			<div class="nav-side-menu   pull-left" style="padding-top: 40px;font-family: verdana, sans-serif;
+			<div  ng-show="showmain" class="nav-side-menu  pull-left" style="padding-top: 40px;font-family: verdana, sans-serif;
     font-size:14;
-    font-weight:400;
-    color:#21D2D2;background-color: none;
+    font-weight:400;height:640px;width:200px;
+    color:#21D2D2;background-color:black;
     ">
 	
 	
-        <i style="color: #E3EFEF;width: 100px;height: 130px;padding-left: 100px;" label= "badge" class="fa fa-user fa-5x "></i> 
-<br>
 	  <!--  <div class="icon-wrapper" width: 100px;height: 130px;padding-left: 100px;>
 	   <i class="fa fa-user custom-icon" ><span class="fix-editor">&nbsp;</span></i>
 	   </div> -->
@@ -109,18 +108,18 @@
 						<a href="#view" style="color: white;padding-bottom: 15px;">
 						<i style="color:cyan" class="fa fa-user fa-lg"></i>&nbsp;Admin <span style="color:cyan" class="arrow"></span></a>
 					</li>
-					<ul class="sub-menu collapse" id="admin">
+					<ul class="sub-menu" id="admin">
 						<li><a href="#home">Books</a></li>
 
 						<li role="presentation"><a href="#new">Add Book</a></li>
-						<li role="presentation"><a href="#editmodal">Add Category</a></li>
+						<li role="presentation"><a href="#add">Add Category</a></li>
 						<li role="presentation"><a href="#fine">Fine Details</a></li>
 					</ul>
 					<li data-toggle="collapse" data-target="#clerk" class="collapsed">
 						<a href="#view" style="color: white"><i style="color:cyan"
 							class="fa fa-user fa-lg"></i>&nbsp;Clerk<span style="color:cyan" class="arrow"></span></a>
 					</li>
-					<ul class="sub-menu collapse" id="clerk">
+					<ul class="sub-menu" id="clerk">
 						<li><a href="#home">Books</a></li>
 						<li><a href="#issuebook">Issue Book</a></li>
 						<li role="presentation"><a href="#returnbook">Mark as Return</a></li>
@@ -133,7 +132,7 @@
 						<a href="#view" style="color: white"><i style="color:cyan"
 							class="fa fa-user fa-lg"></i>&nbsp; Member<span style="color:cyan" class="arrow"></span></a>
 					</li>
-					<ul class="sub-menu collapse" id="new">
+					<ul class="sub-menu" id="new">
 						<li><a href="#mybooks">My Books</a></li>
 						<li><a href="#home">Search Book</a></li>
 						<li><a href="#viewhistory/2">History</a></li>
@@ -154,14 +153,61 @@
 				
 				</p>
             </header> -->
-        </div>
-        <div ng-view >
+
+
+	<div class="container" id='form' ng-hide="showmain">
+		<div class="col-md-11"  >			
+			<form style="padding-left: 150px; background-color: rgba(223, 235, 236, 0.93);margin-left: 240px;padding-top: 30px;margin-top: 80px;" class="form-horizontal login-form-2 panel" role="form">
+				<div class="row">
+					<div class="col-md-7">
+						<h1>Sign In!</h1>
+					</div>
+				</div>
+					
+				        <div class="form-group">
+				          <div class="col-md-7">		          	
+				            <label for="username" class="control-label">Username</label>
+				            <div class="icon-container">
+				            	<i class="fa fa-user"></i>
+				            	<input type="text"  style="width: 342px;" class="form-control" id="username" placeholder="">
+				            </div>		            		            		            
+				          </div>              
+				        </div>
+				        <div class="form-group">
+				          <div class="col-md-7">
+				            <label for="password" class="control-label">Password</label>
+				            <div class="icon-container">
+				            	<i class="fa fa-lock"></i>
+				            	<input type="password" style="width: 342px;" class="form-control" id="password" placeholder="">
+				            </div>
+				          </div>
+				        </div>
+				<div class="row" style="margin-left: 10px; width: 300px;">
+					<a  href="#view"  style="width: 124px;color:black" role="button" ng-click="showmain=true" 
+					class="btn btn-info">LOG IN</a>
+					<a  href="#register"  style="width: 124px;color:black" role="button"
+					class="btn btn-info"  data-toggle="modal" data-target="#register">Register</a>
+				</div>
+			</form>
+				             </div>
+				             
+				             
+
+	</div>
         
-       
         
+<!--  <div class="row">
+ <div class="col-md-8 col-md-offset-3"> -->
+        <div ng-view style="
+    
+    margin-top: 30px;
+   
+    margin-bottom: 20px;
+" >
         </div>
+      
          <!-- start copyright -->
-        <footer id="copyright" style="
+        <footer ng-show=showrule id="copyright" style="
     style="margin-left: 0px;">
             <div class="container panel col-md-3" style="background-color: rgba(255, 255, 255, 0);
     border: 1px solid transparent;"  >

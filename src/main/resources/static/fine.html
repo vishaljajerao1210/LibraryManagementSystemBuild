@@ -1,9 +1,11 @@
 
 
 <body ng-controller="viewfinectrl" align="centre">
-	<div class="container">
-		<div class=" col-md-offset-4 "
-			style="padding-top =: 40px; padding-top: 60px; margin-left: 260px;">
+	<div class="container" style="
+    margin-left: 80px;
+">
+		<div 
+			style="padding-top =: 40px; padding-top: 60px;">
 			<!-- Description of fines -->
 			<div>
 				<!-- list will start here -->
@@ -11,7 +13,7 @@
 					<div>
 						<!-- list item will start here -->
 						<li class="overlay panel"
-							style="background-color: rgba(0, 0, 0, 0.55)"
+							style="background-color: rgba(0, 0, 0, 0.55);width:800px;"
 							ng-repeat="x in finesview">
 
 							<div style="padding-top: 10px;">
@@ -37,8 +39,8 @@
 		</div>
 
 
-		<div class="panel  col-md-offset-4 " ng-show=addrule
-			style="height: 242px; width: 502px; padding-left: 30px; border-right-width: 40px; padding-top: 40px; margin-left: 460px;">
+		<div class="panel  " ng-show=addrule
+			style="height: 242px; width: 502px; padding-left: 30px; border-right-width: 40px; padding-top: 40px; margin-left: 100px;">
 			<form>
 				<b>Number Of Days</b> <input type="text" id="days"
 					placeholder="Number Of Days" class="form-control"

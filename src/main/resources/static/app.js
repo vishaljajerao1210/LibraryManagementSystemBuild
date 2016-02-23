@@ -21,7 +21,10 @@ app.config(['$routeProvider','$httpProvider',
 		templateUrl: 'editprofile.html',
 		controller: 'editprofilectrl'
 	})
-
+    .when('/register',{
+         templateUrl:'register.html',
+         controller:'registerctrl'
+    })
 
 	.when('/new', {
 		templateUrl: 'newbook.html',
@@ -83,9 +86,9 @@ app.config(['$routeProvider','$httpProvider',
 		controller: 'animationctrl'
 	})
 
-	.otherwise({
-	 redirectTo: '/view'
-	 });
+	//.otherwise({
+	// redirectTo: '/view'
+	// });
 }]);
 
 
@@ -179,6 +182,22 @@ app.controller('animationctrl', [ '$scope','$rootScope', '$http', function($scop
 		
 		}])
 		
+		app.controller('registerctrl', [ '$scope','$rootScope','$http',  '$routeParams', function($scope, $rootScope, $http, $routeParams) {
+
+	   $rootScope.member={};
+       $scope.register=function(){
+	 	$http({
+			method : 'POST',
+			url : '/savemember',
+			data:$rootScope.member
+		}).then(function(response) {
+			$rootScope.memb = response.data;
+		});
+       }
+       }])
+		
+		
+		//controller to mark a book by clerk
 		app.controller('returnbookctrl', [ '$scope','$rootScope', '$http', function($scope,$rootScope, $http) {
 		$scope.title = 'clerk can return book here!';
 		$http({

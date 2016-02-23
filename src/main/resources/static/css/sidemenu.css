@@ -64,6 +64,8 @@
 .nav-side-menu ul .sub-menu li.active,
 .nav-side-menu li .sub-menu li.active {
   color:cyan;
+  background-color: white;
+  
 }
 .nav-side-menu ul .sub-menu li.active a,
 .nav-side-menu li .sub-menu li.active a {

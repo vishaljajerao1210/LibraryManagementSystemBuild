@@ -1,12 +1,30 @@
 
 <body ng-controller="viewcategories">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-10">
-				&nbsp;&nbsp;
-				<h1  style="color:hotpink" ><b>List Of Categories<b></h1><br>
+	 <div class="container">
+		
+			<div class="col-xs-5 pull-left"> <b><h2 style="color: hotpink">List Of Categories</h2></b>
+	</div>	<div class="col-xs-5 pull-right">
+			<form class="col-xs-11 " style="padding-top: 10px">
+				<div id="custom-search-input" style="height: 58px;">
+					<div class="input-group col-xs-12">
+						<input type="text" class="form-control input-lg"
+							placeholder="search for a category..." /> <span class="input-group-btn">
+							<button class="btn btn-info btn-lg" ng-click="" type="button">
+								<i class="glyphicon glyphicon-search"></i>
+							</button>
+						</span>
+					</div>
+					</div>
+			</form>
+			</div>
+			<br>
+			<br>
+			<div class="col-md-10" style="
+  
+    margin-top: 40px;
+"> 
 				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-repeat="x in categories">
-				<div class="overlay panel" style="background-color :rgba(0, 0, 0, 0.55);">
+				<div class="overlay panel" style="background-color: black;">
 				<h2 style="color: cyan" >{{x.categoryname}}</h2>
 				<h4>
 								<br>
@@ -37,10 +55,10 @@
 							</h4>
 						</div> -->
 					</div>
-				</div>
+				 </div>
 			</div>
-		</div>
-	</div>
+		<!-- end of page -->
+
 	<div ng-controller="editcategoryctrl">
 		<div class="container">
 			<!-- Trigger the modal with a button -->
@@ -78,5 +96,6 @@
 		</div>
 
 	</div>
+<!-- end of modal -->
 
 </body>
