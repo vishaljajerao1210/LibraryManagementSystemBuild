@@ -44,7 +44,7 @@
 
 <script src="app.js"></script>
     </head>
-    <body id="page" ng-app="app" style="background-color: rgba(0, 0, 0, 0.55);">
+    <body id="page" ng-app="app" ng-controller="animationctrl" style="background-color: rgba(0, 0, 0, 0.55);">
      <!--   <ul class="cb-slideshow">
             <li><span>Image 01</span><div><b style="color:cyan;font-size:30px">dreams.last.for.a.night.time.but.<b style="color:hotpink">books</b>.take.forever&nbsp;&nbsp;</b></div></li>
             <li><span>Image 02</span><div><h3></h3></div></li>
@@ -76,13 +76,13 @@
   </ul>
   <ul class="nav navbar-nav pull-right">
   <li class="nav-item active">
-      <a class="nav-link" href="#viewprofile"  ng-show="showmain" style="padding-top: 30px;"> <i style="color:cyan" class="fa fa-user fa-lg"></i>&nbsp;User Name</a>
+      <a class="nav-link" href="#viewprofile"  ng-show="authenticated" style="padding-top: 30px;"> <i style="color:cyan" class="fa fa-user fa-lg"></i>&nbsp;User Name</a>
     </li>
 	   <li class="nav-item active">
-      <a class="nav-link" href="#editprofile"  ng-show="showmain"  style="padding-top: 30px;"> <i style="color:cyan" class="fa fa-pencil fa-lg"></i>&nbsp; Edit Profile</a>
+      <a class="nav-link" href="#editprofile"  ng-show="authenticated"  style="padding-top: 30px;"> <i style="color:cyan" class="fa fa-pencil fa-lg"></i>&nbsp; Edit Profile</a>
     </li>
   <li class="nav-item active">
-      <a class="nav-link" href="#logout"   ng-show="showmain" style="padding-top: 30px;"> <i style="color:cyan" class="fa fa-power-off"></i>&nbsp; LogOut</a>
+      <a class="nav-link" href="#logout"   ng-show="authenticated" style="padding-top: 30px;"> <i style="color:cyan" class="fa fa-power-off"></i>&nbsp; LogOut</a>
     </li>
   </ul>
 </nav>
@@ -90,7 +90,7 @@
 		<!--Top nav bar -->
 		<!-- Side-Nav bar -->
 		
-			<div  ng-show="showmain" class="nav-side-menu  pull-left" style="padding-top: 40px;font-family: verdana, sans-serif;
+			<div  ng-show="authenticated" class="nav-side-menu  pull-left" style="padding-top: 40px;font-family: verdana, sans-serif;
     font-size:14;
     font-weight:400;height:640px;width:200px;
     color:#21D2D2;background-color:black;
@@ -164,12 +164,12 @@
 					</div>
 				</div>
 					
-				        <div class="form-group">
+				        <div class="form-group" ng-hide="authenticated">
 				          <div class="col-md-7">		          	
 				            <label for="username" class="control-label">Username</label>
 				            <div class="icon-container">
 				            	<i class="fa fa-user"></i>
-				            	<input type="text"  style="width: 342px;" class="form-control" id="username" placeholder="">
+				            	<input type="text"  style="width: 342px;" class="form-control" id="username" ng-model="auth.userName">
 				            </div>		            		            		            
 				          </div>              
 				        </div>
@@ -178,12 +178,12 @@
 				            <label for="password" class="control-label">Password</label>
 				            <div class="icon-container">
 				            	<i class="fa fa-lock"></i>
-				            	<input type="password" style="width: 342px;" class="form-control" id="password" placeholder="">
+				            	<input type="password" style="width: 342px;" class="form-control" id="password" ng-model="auth.password">
 				            </div>
 				          </div>
 				        </div>
 				<div class="row" style="margin-left: 10px; width: 300px;">
-					<a  href="#view"  style="width: 124px;color:black" role="button" ng-click="showmain=true" 
+					<a  href="#view"  style="width: 124px;color:black" role="button" ng-click="login()" 
 					class="btn btn-info">LOG IN</a>
 					<a  href="#register"  style="width: 124px;color:black" role="button"
 					class="btn btn-info"  data-toggle="modal" data-target="#register">Register</a>

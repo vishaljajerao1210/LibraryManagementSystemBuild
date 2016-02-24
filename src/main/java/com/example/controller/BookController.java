@@ -4,12 +4,19 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 //import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+
 
 import org.neo4j.cypher.internal.compiler.v2_2.replace;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -107,6 +114,35 @@ public class BookController {
 			returnParams.put("msg", "Failed to add Category!!");
 		}
 
+		return returnParams;
+	}
+	
+	
+	@RequestMapping("/log")
+	public HashMap<String,String>loggedIn()
+	{
+		
+		HashMap<String, String> returnParams = new HashMap<String, String>();
+		if(!(SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken) && SecurityContextHolder.getContext().getAuthentication().isAuthenticated()==true)
+		{
+			returnParams.put("status", "true");	
+		
+		Collection<? extends GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+		Boolean authority = authorities.contains(new SimpleGrantedAuthority("USER"));
+		Boolean auth = true;
+		System.out.println(authority);
+		if(authority==auth)
+		returnParams.put("role", "user");
+		else
+			returnParams.put("role", "admin");
+		}
+		else
+		{
+			returnParams.put("status", "false");	
+		}
+		
+		
+		
 		return returnParams;
 	}
 	

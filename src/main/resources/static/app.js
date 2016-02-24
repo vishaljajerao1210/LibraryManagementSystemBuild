@@ -163,6 +163,46 @@ app.controller('addbookctrl', [ '$scope','$rootScope', '$http', function($scope,
 
 app.controller('animationctrl', [ '$scope','$rootScope', '$http', function($scope,$rootScope, $http) {
 		$scope.title = 'hai welcome to LBS!';
+		
+	$rootScope.auth={};
+		
+		$scope.login = function() {
+			var authData = $scope.auth.userName + ':' + $scope.auth.password;
+			var encodedAuthData = btoa(authData);
+				$http({
+					method : 'GET',
+					url : '/log',     
+					headers : {'Authorization' : 'Basic ' + encodedAuthData}
+				}).then(function(response) {
+					
+					$rootScope.response = response.data;
+					alert('authentication Successfull');
+	$rootScope.authenticated = true;
+	if($rootScope.response.role=='user')
+		{
+		$rootScope.user=true;
+		$rootScope.admin=false;
+
+	//alert($rootScope.user);
+		}
+	else
+		{
+		$rootScope.admin=true;
+		$rootScope.user=false;
+
+		//alert($rootScope.admin);
+		}
+				
+					$location.path('/');
+					
+					
+			}, function(response){
+				$rootScope.authenticated = false;
+				alert('authentication failed');
+				alert($rootScope.authenticated);
+			});
+		}
+		
 	
 		
 		
